@@ -79,12 +79,7 @@ function pageForm(data) {
 
 
 document.addEventListener("DOMContentLoaded", function (event) {
-    PagesServices.getAll().then(data => {
-
-        document.getElementById('pages').innerHTML = prepareList(JSON.parse(data));
-        // console.log(data);
-        // document.getElementById('content').innerHTML += drawDataInTable(data);
-    });
+    var pgl = new PageListComponent();
 
 
     document.getElementById("pages").addEventListener("click", function (e) {
@@ -105,8 +100,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
                     document.getElementById('content').innerHTML = html;
                 }
-
-
             });
         }
 

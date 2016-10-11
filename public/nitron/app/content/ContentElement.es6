@@ -1,0 +1,7 @@
+class ContentElement {
+    constructor() {}
+
+    template() {
+
+    }
+}

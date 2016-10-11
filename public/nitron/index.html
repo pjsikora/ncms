@@ -10,8 +10,11 @@
     <title>Document</title>
 </head>
 <body>
-<div id="pages"></div>
-<div id="content"></div>
+<div class="wrapper">
+    <div id="pages" class="pages"></div>
+    <div id="content" class="content"></div>
+
+</div>
 
 <div id="modalWindow" class="modalWindow">
     <div class="modalInner">
@@ -26,10 +29,13 @@
 </div>
 
 
-<script src="app/AJAX.es6"></script>
+<script src="app/helpers/AJAX.es6"></script>
 <script src="app/content/ContentServices.es6"></script>
+
 <script src="app/page/PagesServices.es6"></script>
-<script src="app/ModalWindow.es6"></script>
+<script src="app/page/PageListComponent.es6"></script>
+
+<script src="app/helpers/ModalWindow.es6"></script>
 <script src="app/app.es6"></script>
 </body>
 </html>
