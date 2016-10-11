@@ -1,0 +1,9 @@
+html
+    head
+        title= title
+    body
+        h1= message
+        - var test = message
+
+        each entry in test
+            div= entry.content

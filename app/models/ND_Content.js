@@ -3,12 +3,12 @@ var mongoose = require('mongoose');
 var ND_Content__model = {
         id: String,
         parent_id: Number,
+        created: Date,
         content: String,
         page_id: String,
 
         is_deleted: Boolean,
         is_visible: Boolean,
-
 
         name: String
 };

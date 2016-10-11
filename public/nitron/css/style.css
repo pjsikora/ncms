@@ -14,6 +14,9 @@
   height: 100%; }
 
 .modalInner {
+  padding: 20px;
+  border-radius: 10px;
+  background: #fff;
   position: absolute;
   top: 50%;
   left: 50%;

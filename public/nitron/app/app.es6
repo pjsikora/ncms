@@ -28,7 +28,6 @@ function createList(urlsList) {
 }
 
 
-
 function getPages() {
     return makeRequest("GET", "/api/pages/list");
 }
@@ -51,9 +50,7 @@ function drawDataInTable(data) {
 function prepareList(data) {
     var html = "<ul>";
 
-
-
-    data.forEach(function(el) {
+    data.forEach(function (el) {
         html += `<li 
             data-parent="${el.parent_id}" 
             data-is-deleted="${el.is_deleted}" 
@@ -71,7 +68,7 @@ function prepareList(data) {
 function pageForm(data) {
     var form = `<input type="text" placeholder="Name" value="">
         <input type="text" placeholder="Name" value="">
-        <input type="text" placeholder="Name" value="">
+        <input type="checkbox" id="is_visible"><label for="is_visible">Visible</label>
         <select name="" id="">
         
         </select>`;
@@ -79,7 +76,6 @@ function pageForm(data) {
 
     return form;
 }
-
 
 
 document.addEventListener("DOMContentLoaded", function (event) {
@@ -91,11 +87,26 @@ document.addEventListener("DOMContentLoaded", function (event) {
     });
 
 
-    document.getElementById("pages").addEventListener("click", function(e) {
-        if(e.target && e.target.nodeName == "LI") {
+    document.getElementById("pages").addEventListener("click", function (e) {
+        if (e.target && e.target.nodeName == "LI") {
             var elID = e.target.dataset.id;
-            PagesServices.read(elID).then(data => {
-               console.log(data);
+
+            ContentServices.read(elID).then(data => {
+                var contents = JSON.parse(data);
+                if (contents.length == 0) {
+                    document.getElementById('content').innerHTML = "No content";
+                } else {
+                     var html = '<ul>';
+
+                    contents.forEach(function(el) {
+                        html += `<li>${el.content}</li>`;
+                    });
+                    html += '</ul>';
+
+                    document.getElementById('content').innerHTML = html;
+                }
+
+
             });
         }
 
@@ -103,11 +114,13 @@ document.addEventListener("DOMContentLoaded", function (event) {
             var id = e.target.parentNode.dataset.id,
                 name = e.target.parentNode.dataset.name;
 
-            ModalWindow.show('Are you sure you want to delete page: '+name);
+            ModalWindow.show('Are you sure you want to delete page: ' + name);
         }
 
         if (e.target && e.target.nodeName == "SPAN" && e.target.dataset.function == "edit") {
             var id = e.target.parentNode.dataset.id;
+
+
         }
     });
 });
