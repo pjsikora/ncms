@@ -2,7 +2,7 @@ class PagesServices {
     // Returns Promise
 
     static getAll() {
-        return getPages();
+        return AJAX.get("/api/pages/list");
     }
 
     static edit(id, data) {
@@ -15,10 +15,10 @@ class PagesServices {
 
     // Returns Promise
     static read(id) {
-        return ND_AJAX.get("/api/pages/read?_id="+id);
+        return AJAX.get("/api/pages/read?_id="+id);
     }
 
     static delete(id) {
-        return ND_AJAX.get("/api/pages/delete?_id="+id);
+        return AJAX.get("/api/pages/delete?_id="+id);
     }
 }

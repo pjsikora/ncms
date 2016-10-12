@@ -9,6 +9,8 @@ var contents = {
             if (err) {
                 console.log(err);
             } else {
+                console.log(nd_pages);
+
                 res.json(nd_pages);
             }
         });
@@ -22,7 +24,8 @@ var contents = {
             is_visible = req.query.is_visible || 1,
 
             name = req.query.name,
-            created = new Date();
+            created = new Date(),
+            response = {};
 
 
         var nd_content = new ND_Content({
@@ -38,26 +41,35 @@ var contents = {
 
         nd_content.save(function (err) {
             if (err) {
-                console.log(err);
+                response['status'] = "error";
+                response['content'] = err;
+
                 res.json(err);
             } else {
-                res.json('ok');
+                response['status'] = "ok";
+
+                res.json(response);
             }
         });
     },
 
     read: function (req, res) {
-        var page_id = req.query.page_id;
+        var page_id = req.query.page_id,
+            response = {};
 
         ND_Content.find({ page_id: page_id}, function(err, contents) {
             if (err) {
-                res.json(err);
+                response['status'] = "error";
+                response['content'] = err;
+
+                res.json(response);
             } else {
-                res.json(contents);
+                response['status'] = "ok";
+                response['content'] = contents;
+
+                res.json(response);
             }
         });
-
-        // res.json( page_id );
     },
 
     update: function (req, res) {

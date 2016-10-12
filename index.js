@@ -1,11 +1,11 @@
 var express = require('express'),
     app = express(),
-    // pug = require('pug'), // DB
     mongoose = require('mongoose'), // DB
     morgan = require('morgan'); // Reporting
 
-var apiRoutes = require('./app/routes-api');
-var feRoutes = require('./app/routes-fe');
+// Routings
+var apiRoutes = require('./app/routes-api'),
+    feRoutes = require('./app/routes-fe');
 
 
 
@@ -13,11 +13,11 @@ mongoose.connect('mongodb://localhost/nitron', function(err) {
     if (err) throw err;
 });
 
-app.use(morgan('dev'));
-app.use(express.static('public'));
+app.use(morgan('dev')); // Set logging
+app.use(express.static('public')); // Public folder
 
-app.set('views', './app/views');
-app.set('view engine', 'pug');
+app.set('views', './app/views'); // Views path
+app.set('view engine', 'pug'); // Use pug engine for FE
 
 
 app.use('/api/', apiRoutes); // API Routes

@@ -1,23 +1,36 @@
 var mongoose = require('mongoose');
 
 var ND_Content__model = {
-        id: String,
-        parent_id: Number,
-        created: Date,
-        content: String,
-        page_id: String,
-
-        is_deleted: Boolean,
-        is_visible: Boolean,
-
-        name: String
+    id: String,
+    parent_id: {
+        type: String,
+        required: true
+    },
+    created: {
+        type: Date,
+        required: true
+    },
+    order: {
+        type: Number,
+        required: true
+    },
+    content: String,
+    page_id: {
+        type: String,
+        required: true
+    },
+    is_deleted: {
+        type: Number,
+        derault: false
+    },
+    is_visible: {
+        type: Number,
+        derault: true
+    },
+    name: {
+        type: String,
+        required: true
+    }
 };
-
-
-// module.exports = {
-//         model: ND_Content__model
-// }
-exports.ND_Content__model = ND_Content__model;
-exports.qrwa = "qrwa";
 
 module.exports = mongoose.model('ND_Content', ND_Content__model);

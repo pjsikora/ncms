@@ -9,77 +9,9 @@ function isURL(str) {
     }
 }
 
-function prepareElement(string) {
-    var validString = isURL(string) ? "validElement" : "invalidElement";
-
-    return '<li class="' + validString + '" data-css="false">' + string + '</li>';
-}
-
-function createList(urlsList) {
-    var list = '<ul>';
-
-    urlsList.forEach(function (el) {
-        list += prepareElement(el);
-    });
-
-    list += '</ul>';
-
-    return list;
-}
-
-
-function getPages() {
-    return makeRequest("GET", "/api/pages/list");
-}
-
-function getContents() {
-    return makeRequest("GET", "/api/contents/list");
-}
-
-function drawDataInTable(data) {
-    var table;
-
-    table = `<table>
-            <tr><td>Test</td></tr>
-    </table>`;
-
-    return table;
-}
-
-
-function prepareList(data) {
-    var html = "<ul>";
-
-    data.forEach(function (el) {
-        html += `<li 
-            data-parent="${el.parent_id}" 
-            data-is-deleted="${el.is_deleted}" 
-            data-is-visible="${el.is_visible}" 
-            data-id="${el._id}"
-            data-name="${el.name}">
-            ${el.name} <span class="fa fa-pencil" data-function="edit"></span><span class="fa fa-trash-o" data-function="delete"></span>
-            </li>`;
-    });
-
-    html += "</ul>"
-    return html;
-}
-
-function pageForm(data) {
-    var form = `<input type="text" placeholder="Name" value="">
-        <input type="text" placeholder="Name" value="">
-        <input type="checkbox" id="is_visible"><label for="is_visible">Visible</label>
-        <select name="" id="">
-        
-        </select>`;
-
-
-    return form;
-}
-
 
 document.addEventListener("DOMContentLoaded", function (event) {
-    var pgl = new PageListComponent();
+    var pgl = new PageListComponent(); // List page
 
 
     document.getElementById("pages").addEventListener("click", function (e) {
@@ -87,18 +19,25 @@ document.addEventListener("DOMContentLoaded", function (event) {
             var elID = e.target.dataset.id;
 
             ContentServices.read(elID).then(data => {
-                var contents = JSON.parse(data);
-                if (contents.length == 0) {
-                    document.getElementById('content').innerHTML = "No content";
+                console.log(data);
+                var response = JSON.parse(data);
+
+                // Check status
+                if (response.status == "ok") {
+                    if (response.content.length == 0) {
+                        document.getElementById('content').innerHTML = "No content";
+                    } else {
+                        var html = '<ul>';
+
+                        response.content.forEach(function(el) {
+                            html += `<li>${el.content}</li>`;
+                        });
+                        html += '</ul>';
+
+                        document.getElementById('content').innerHTML = html;
+                    }
                 } else {
-                     var html = '<ul>';
 
-                    contents.forEach(function(el) {
-                        html += `<li>${el.content}</li>`;
-                    });
-                    html += '</ul>';
-
-                    document.getElementById('content').innerHTML = html;
                 }
             });
         }

@@ -2,7 +2,7 @@ class ContentServices {
     // Returns Promise
 
     static getAll() {
-        return ND_AJAX.get("/api/contents/list");
+        return AJAX.get("/api/contents/list");
     }
 
     static edit(id, data) {
@@ -15,10 +15,10 @@ class ContentServices {
 
     // Returns Promise
     static read(id) {
-        return ND_AJAX.get("/api/contents/read?page_id="+id);
+        return AJAX.get("/api/contents/read?page_id="+id);
     }
 
     static delete(id) {
-        return ND_AJAX.get("/api/contents/delete?_id="+id);
+        return AJAX.get("/api/contents/delete?_id="+id);
     }
 }

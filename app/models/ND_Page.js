@@ -2,15 +2,33 @@ var mongoose = require('mongoose');
 
 
 var ND_Page__model = {
-        id: Number,
-        parent_id: String,
+    id: Number,
 
-        created: Date,
+    parent_id: {
+        type: String,
+        required: true
+    },
 
-        is_deleted: Boolean,
-        is_visible: Boolean,
+    order: {
+        type: Number,
+        required: true
+    },
+    created: Date,
 
-        name: String
+    is_deleted: {
+        type: Number,
+        derault: false
+    },
+
+    is_visible: {
+        type: Number,
+        derault: true
+    },
+
+    name: {
+        type: String,
+        required: true
+    }
 };
 
 

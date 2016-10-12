@@ -1,4 +1,12 @@
+2016.10.12
+==================================
+Admin panel:
+- DOM.es6
+- Model update (ND_Content, ND_Page)
+
+
 2016.10.11
+==================================
 BE:
 - Changed structure
 
