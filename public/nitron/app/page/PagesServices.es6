@@ -5,12 +5,13 @@ class PagesServices {
         return AJAX.get("/api/pages/list");
     }
 
-    static edit(id, data) {
-
+    static update(id, data) {
+        // TODO
     }
 
     static create(id, data) {
-
+        // TODO
+        return AJAX.get("/api/pages/create?");
     }
 
     // Returns Promise

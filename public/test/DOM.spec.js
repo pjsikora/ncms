@@ -35,6 +35,7 @@ describe('AJAX', function () {
     });
 });
 
+
 describe('BE -> AJAX communication', function () {
     it('get() - static method/funciton exists', function () {
         expect(typeof AJAX.get).toBe("function");

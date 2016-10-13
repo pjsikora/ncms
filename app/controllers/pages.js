@@ -22,12 +22,16 @@ var pages = {
         });
     },
 
+
+    // http://localhost:8888/api/pages/create?order=0&name=Third%20level&parent_id=57fba6ef97b6895d80b58bbf
     create: function (req, res) {
-        var parent_id = req.query.parent_id || 0,
-            is_deleted = req.query.is_deleted || 1,
-            is_visible = req.query.is_visible || 1,
-            name = req.query.name,
+        var _gp = req.query, // Get params
+            parent_id = _gp.parent_id || 0,
+            is_deleted = _gp.is_deleted || 1,
+            is_visible = _gp.is_visible || 1,
+            name = _gp.name,
             created = new Date(),
+            order = _gp.order,
             response = {};
 
 
@@ -36,7 +40,8 @@ var pages = {
             is_deleted: is_deleted,
             is_visible: is_visible,
             name: name,
-            created: created
+            created: created,
+            order: order
         });
 
         nd_page.save(function (err) {

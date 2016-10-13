@@ -8,7 +8,6 @@ var apiRoutes = require('./app/routes-api'),
     feRoutes = require('./app/routes-fe');
 
 
-
 mongoose.connect('mongodb://localhost/nitron', function(err) {
     if (err) throw err;
 });

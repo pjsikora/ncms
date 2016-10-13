@@ -1,18 +1,12 @@
 "use strict";
 
-function isURL(str) {
-    var regex = /(http|https):\/\/(\w+:{0,1}\w*)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%!\-\/]))?/;
-    if (!regex.test(str)) {
-        return false;
-    } else {
-        return true;
-    }
-}
-
-
 document.addEventListener("DOMContentLoaded", function (event) {
-    var pgl = new PageListComponent(); // List page
+    var router = new Router(
+        { "ding/dong": function() {console.log('siup')}},
+        {}
+        );
 
+    var pgl = new PageListComponent(); // List page
 
     document.getElementById("pages").addEventListener("click", function (e) {
         if (e.target && e.target.nodeName == "LI") {
@@ -29,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
                     } else {
                         var html = '<ul>';
 
-                        response.content.forEach(function(el) {
+                        response.content.forEach(function (el) {
                             html += `<li>${el.content}</li>`;
                         });
                         html += '</ul>';

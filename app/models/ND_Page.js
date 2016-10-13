@@ -13,6 +13,7 @@ var ND_Page__model = {
         type: Number,
         required: true
     },
+
     created: Date,
 
     is_deleted: {
