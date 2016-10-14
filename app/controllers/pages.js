@@ -60,8 +60,9 @@ var pages = {
 
 
     read: function (req, res) {
-        var parent_id = req.query.parent_id,
-            searchCriteria = parent_id ? {parent_id: parent_id} : {},
+        var
+            _id = req.query._id,
+            searchCriteria = _id ? {_id: _id} : {},
             response = {};
 
         ND_Page.find(searchCriteria, function (err, nd_pages) {

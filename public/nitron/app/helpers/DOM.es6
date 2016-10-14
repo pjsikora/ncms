@@ -6,4 +6,11 @@ class DOM {
         var frag = document.createDocumentFragment();
         return frag.appendChild(el.removeChild(el.firstChild));
     }
+
+    static removeAllEventListeners(element) {
+        let old_element = element,
+            new_element = old_element.cloneNode(true);
+
+        old_element.parentNode.replaceChild(new_element, old_element);
+    }
 }
