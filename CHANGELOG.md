@@ -4,6 +4,7 @@ Admin panel:
 - Drawing tree of elements
 - Form draft
 - Change in ModalWindow (moved logic)
+- Helpers draft
 
 
 2016.10.12
