@@ -49,6 +49,8 @@ class PageListComponent {
             rootNode = { children: []},
             nodeList = { 0 : rootNode};
 
+        console.log(list);
+
         for (var i = 0; i < list.length; i++) {
             nodeList[data[i]._id] = data[i];
 

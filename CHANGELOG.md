@@ -1,10 +1,22 @@
-2016.10.13
+2016.10.15
+==================================
+Admin panel:
+- Simplified adding pages into tree
+
+
+2016.10.14
 ==================================
 Admin panel:
 - Drawing tree of elements
 - Form draft
 - Change in ModalWindow (moved logic)
 - Helpers draft
+
+
+2016.10.13
+==================================
+Admin panel:
+- Drawing tree of elements
 
 
 2016.10.12

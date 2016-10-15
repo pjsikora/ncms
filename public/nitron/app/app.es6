@@ -56,14 +56,37 @@ document.addEventListener("DOMContentLoaded", function (event) {
                 ModalWindow.show('Are you sure you want to delete page: ' + name);
 
             } else if (e.target.dataset.function == "edit") {
-                console.log('edit');
-                console.log(id);
-
-            } else if (e.target.dataset.function == "addPage") {
                 console.log('addPage');
                 console.log(id);
 
-                // var content = PageFormComponent.getHTML();
+                var data = {
+                    _id: id
+                }
+
+                document.getElementById('content').innerHTML = PageFormComponent.getHTML(data);
+                var button = document.getElementById('createPage');
+
+                button.addEventListener('click', e   => {
+                    console.log('Edit element');
+
+                    Preloader.show();
+                    var sendData = {
+                        name: document.getElementById('name').value,
+                        parent_id: document.getElementById('_id').getAttribute('val'),
+                        order: 0
+                    }
+
+                    console.log(sendData);
+
+                    PageServices.edit(sendData).then(data => {
+                        console.log(data);
+                        Preloader.hide();
+                    })
+
+                });
+            } else if (e.target.dataset.function == "addPage") {
+                console.log('addPage');
+                console.log(id);
 
                 var data = {
                     parent_id: id
@@ -72,15 +95,17 @@ document.addEventListener("DOMContentLoaded", function (event) {
                 document.getElementById('content').innerHTML = PageFormComponent.getHTML(data);
                 var button = document.getElementById('createPage');
 
-                button.addEventListener('click', e => {
+                button.addEventListener('click', e   => {
                     console.log('Create element');
 
                     Preloader.show();
                     var sendData = {
                         name: document.getElementById('name').value,
-                        parent_id: document.getElementById('parent_id').value,
+                        parent_id: document.getElementById('parent_id').getAttribute('val'),
                         order: 0
                     }
+
+                    console.log(sendData);
 
                     PageServices.create(sendData).then(data => {
                         console.log(data);
@@ -94,6 +119,35 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
                 console.log('addContent');
                 console.log(id);
+
+
+
+
+                var data = {
+                    parent_id: id
+                }
+
+                document.getElementById('content').innerHTML = PageFormComponent.getHTML(data);
+                var button = document.getElementById('createPage');
+
+                button.addEventListener('click', e   => {
+                    console.log('Create element');
+
+                    Preloader.show();
+                    var sendData = {
+                        name: document.getElementById('name').value,
+                        parent_id: document.getElementById('parent_id').getAttribute('val'),
+                        order: 0
+                    }
+
+                    console.log(sendData);
+
+                    PageServices.create(sendData).then(data => {
+                        console.log(data);
+                        Preloader.hide();
+                    })
+
+                });
             }
         }
     });
