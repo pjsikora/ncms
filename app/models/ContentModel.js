@@ -8,7 +8,7 @@ var ND_Content__model = {
     },
     created: {
         type: Date,
-        required: true
+        // required: true
     },
     order: {
         type: Number,
@@ -33,4 +33,4 @@ var ND_Content__model = {
     }
 };
 
-module.exports = mongoose.model('ND_Content', ND_Content__model);
+module.exports = mongoose.model('ContentModel', ND_Content__model);

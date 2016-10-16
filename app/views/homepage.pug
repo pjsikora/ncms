@@ -1,8 +1,15 @@
+include common/mixins/head.pug
+
 html
     head
+
+        +headerSEO({description: 'DESCRIPTION', keywords: 'KEYWORDS'})
         title= title
+
     body
-        h1= message
+        - if (typeof(title) !== 'undefined')
+            h1= title
+
         - var test = message
 
         each entry in test

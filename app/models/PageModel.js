@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 
 
-var ND_Page__model = {
+var PageModel = {
     id: Number,
 
     parent_id: {
@@ -13,7 +13,9 @@ var ND_Page__model = {
         type: Number,
         required: true
     },
-
+    slug: {
+        type:  String
+    },
     created: Date,
 
     is_deleted: {
@@ -29,8 +31,25 @@ var ND_Page__model = {
     name: {
         type: String,
         required: true
+    },
+
+
+
+    // SEO
+    page_author: {
+        type: String
+    },
+    page_description: {
+        type: String
+    },
+    page_keywords: {
+        type: String
+    },
+    page_title: {
+        type: String
     }
+
 };
 
 
-module.exports = mongoose.model('ND_Page', ND_Page__model);
+module.exports = mongoose.model('PageModel', PageModel);

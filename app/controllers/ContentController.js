@@ -1,11 +1,11 @@
-var ND_Content = require('../models/ND_Content');
+var ContentModel = require('../models/ContentModel');
 
-var contents = {
+var ContentController = {
     list: function (req, res) {
         var page_id = req.query.page_id,
             searchCriteria = page_id ? {page_id: page_id} : {};
 
-        ND_Content.find(searchCriteria, function (err, nd_pages) {
+        ContentModel.find(searchCriteria, function (err, nd_pages) {
             if (err) {
                 console.log(err);
             } else {
@@ -22,24 +22,27 @@ var contents = {
             page_id = req.query.page_id || '',
             is_deleted = req.query.is_deleted || 1,
             is_visible = req.query.is_visible || 1,
+            order = req.query.order || 0,
 
             name = req.query.name,
             created = new Date(),
             response = {};
 
-
-        var nd_content = new ND_Content({
+        console.log('KUUUURWAAA');
+        var newContent = new ContentModel({
             parent_id: parent_id,
             content: content,
             page_id: page_id,
 
             is_deleted: is_deleted,
             is_visible: is_visible,
+            order: order,
 
             name: name
         });
+        console.log(JSON.stringify(newContent));
 
-        nd_content.save(function (err) {
+        newContent.save(function (err) {
             if (err) {
                 response['status'] = "error";
                 response['content'] = err;
@@ -57,7 +60,7 @@ var contents = {
         var page_id = req.query.page_id,
             response = {};
 
-        ND_Content.find({ page_id: page_id}, function(err, contents) {
+        ContentModel.find({ page_id: page_id}, function(err, contents) {
             if (err) {
                 response['status'] = "error";
                 response['content'] = err;
@@ -79,4 +82,4 @@ var contents = {
     }
 }
 
-module.exports = contents;
+module.exports = ContentController;

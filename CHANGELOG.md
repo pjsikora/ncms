@@ -1,7 +1,16 @@
+2016.10.16
+==================================
+Admin panel:
+
+
+
 2016.10.15
 ==================================
 Admin panel:
 - Simplified adding pages into tree
+- Simplified adding content
+- Models refactoring
+- Conntrollers refactoring
 
 
 2016.10.14

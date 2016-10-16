@@ -11,7 +11,6 @@ class PageServices {
     }
 
     static create(data) {
-        // console.log("/api/pages/create?"+ Helpers.JSON2GET(data));
         return AJAX.get("/api/pages/create?"+ Helpers.JSON2GET(data));
     }
 

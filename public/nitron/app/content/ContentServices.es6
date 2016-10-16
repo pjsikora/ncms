@@ -9,8 +9,8 @@ class ContentServices {
 
     }
 
-    static create(id, data) {
-
+    static create(data) {
+        return AJAX.get("/api/contents/create?"+ Helpers.JSON2GET(data));
     }
 
     // Returns Promise

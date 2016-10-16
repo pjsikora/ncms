@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
                         var html = '<ul>';
 
                         response.content.forEach(function (el) {
-                            html += `<li>${el.content}</li>`;
+                            html += `<li>${el.name}<span></span></li>`;
                         });
                         html += '</ul>';
 
@@ -43,6 +43,9 @@ document.addEventListener("DOMContentLoaded", function (event) {
                 }
             });
         }
+
+
+
 
         if (e.target && e.target.nodeName == "SPAN") {
 
@@ -102,7 +105,10 @@ document.addEventListener("DOMContentLoaded", function (event) {
                     var sendData = {
                         name: document.getElementById('name').value,
                         parent_id: document.getElementById('parent_id').getAttribute('val'),
-                        order: 0
+                        order: 0,
+                        slug: document.getElementById('slug').value,
+                        page_description: document.getElementById('page_description').value,
+                        page_keywords: document.getElementById('page_keywords').value
                     }
 
                     console.log(sendData);
@@ -121,13 +127,11 @@ document.addEventListener("DOMContentLoaded", function (event) {
                 console.log(id);
 
 
-
-
                 var data = {
-                    parent_id: id
+                    page_id: id
                 }
 
-                document.getElementById('content').innerHTML = PageFormComponent.getHTML(data);
+                document.getElementById('content').innerHTML = ContentFormComponent.getHTML(data);
                 var button = document.getElementById('createPage');
 
                 button.addEventListener('click', e   => {
@@ -136,13 +140,13 @@ document.addEventListener("DOMContentLoaded", function (event) {
                     Preloader.show();
                     var sendData = {
                         name: document.getElementById('name').value,
-                        parent_id: document.getElementById('parent_id').getAttribute('val'),
+                        page_id: document.getElementById('page_id').getAttribute('val'),
                         order: 0
                     }
 
                     console.log(sendData);
 
-                    PageServices.create(sendData).then(data => {
+                    ContentServices.create(sendData).then(data => {
                         console.log(data);
                         Preloader.hide();
                     })

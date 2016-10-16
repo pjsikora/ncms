@@ -1,13 +1,13 @@
-var ND_Page = require('../models/ND_Page');
+var PageModel = require('../models/PageModel');
 
 
-var pages = {
+var PageController = {
     list: function (req, res) {
         var parent_id = req.query.parent_id,
             searchCriteria = parent_id ? {parent_id: parent_id} : {},
             response = {};
 
-        ND_Page.find(searchCriteria, function (err, nd_pages) {
+        PageModel.find(searchCriteria, function (err, nd_pages) {
             if (err) {
                 response['status'] = "error";
                 response['content'] = err;
@@ -29,22 +29,29 @@ var pages = {
             parent_id = _gp.parent_id || 0,
             is_deleted = _gp.is_deleted || 1,
             is_visible = _gp.is_visible || 1,
+            page_description = _gp.page_description || '',
+            page_keywords = _gp.page_keywords || '',
+            is_visible = _gp.is_visible || 1,
             name = _gp.name,
             created = new Date(),
             order = _gp.order,
+            slug = _gp.slug,
             response = {};
 
 
-        var nd_page = new ND_Page({
+        var newPage = new PageModel({
             parent_id: parent_id,
             is_deleted: is_deleted,
             is_visible: is_visible,
             name: name,
             created: created,
-            order: order
+            order: order,
+            page_keywords: page_keywords,
+            page_description: page_description,
+            slug: slug
         });
 
-        nd_page.save(function (err) {
+        newPage.save(function (err) {
             if (err) {
                 response['status'] = "error";
                 response['content'] = err;
@@ -60,12 +67,11 @@ var pages = {
 
 
     read: function (req, res) {
-        var
-            _id = req.query._id,
+        var _id = req.query._id,
             searchCriteria = _id ? {_id: _id} : {},
             response = {};
 
-        ND_Page.find(searchCriteria, function (err, nd_pages) {
+        PageModel.find(searchCriteria, function (err, nd_pages) {
             if (err) {
                 response['status'] = "error";
                 response['content'] = err;
@@ -89,7 +95,7 @@ var pages = {
     remove: function (req, res) {
         var response = {};
 
-        ND_Page.remove({_id: req.query._id}, function (err) {
+        PageModel.remove({_id: req.query._id}, function (err) {
             if (err) {
                 response['status'] = "error";
                 response['content'] = err;
@@ -104,4 +110,4 @@ var pages = {
     }
 }
 
-module.exports = pages;
+module.exports = PageController;
