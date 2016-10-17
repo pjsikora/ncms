@@ -31,7 +31,7 @@ class PageListComponent {
     }
 
     draw(data, element) {
-        var html = "<ul>",
+        var html = "<h2>Pages</h2><ul>",
             elArray = data.children;
 
         for (var key in elArray) {

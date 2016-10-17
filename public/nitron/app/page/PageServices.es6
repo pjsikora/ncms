@@ -5,9 +5,9 @@ class PageServices {
         return AJAX.get("/api/pages/list");
     }
 
-    static update(id, data) {
+    static update(data) {
         // TODO
-        return AJAX.get("/api/pages/update  ?");
+        return AJAX.get("/api/pages/update?"+Helpers.JSON2GET(data));
     }
 
     static create(data) {

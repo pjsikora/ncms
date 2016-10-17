@@ -23,12 +23,10 @@ var TemplateController = {
                 });
             }
         });
-
-
     },
 
     renderPage: function (req, res) {
-        ND_Content.find({page_id: req.query.id}, function (err, page) {
+        ND_Content.find({page_id: req.query.page_id}, function (err, page) {
             if (err) {
                 res.render('page', {title: 'error', message: 'no content'})
             } else {
@@ -48,19 +46,20 @@ var TemplateController = {
     },
 
     renderPageBySlug: function (req, res) {
-        ND_Content.find({slug: req.query.slug}, function (err, page) {
+        ND_Content.findOne({slug: req.query.slug}, function (err, page) {
             if (err) {
                 res.render('page', {title: 'error', message: 'no page/content'})
             } else {
-                ND_Content.find({page_id: req.query.id}, function (err, content) {
+                // ND_Content.find({page_id: req.query.id}, function (err, content) {
 
                     res.render('page', {
-                        title: page.page_id,
+                        seo_title: page.page_id,
+                        title: req.params.slug,
                         content: req.content,
                         page_keywords: page.page_keywords,
-                        page_description: page.page_description
+                        page_description: page.page_description,
                     });
-                })
+                // })
 
 
             }

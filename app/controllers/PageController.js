@@ -86,8 +86,51 @@ var PageController = {
         });
     },
 
-
+    // http://localhost:8888/api/pages/update?_id=58036f648ffa843c22140173&name=NOOOOOOOOWA
     update: function (req, res) {
+        var _gp = req.query, // GET params
+
+            _id = _gp._id,
+            parent_id = _gp.parent_id,
+            is_deleted = _gp.is_deleted,
+            is_visible = _gp.is_visible,
+            page_description = _gp.page_description,
+            page_keywords = _gp.page_keywords,
+            name = _gp.name,
+            created = _gp.created,
+            order = _gp.order,
+            slug = _gp.slug,
+            response = {},
+
+            pageModel = {};
+
+        if (typeof parent_id != 'undefined') pageModel['parent_id'] = parent_id;
+        if (typeof is_deleted != 'undefined') pageModel['is_deleted'] = is_deleted;
+        if (typeof is_visible != 'undefined') pageModel['is_visible'] = is_visible;
+        if (typeof page_description != 'undefined') pageModel['page_description'] = page_description;
+        if (typeof page_keywords != 'undefined') pageModel['page_keywords'] = page_keywords;
+        if (typeof name != 'undefined') pageModel['name'] = name;
+        if (typeof created != 'undefined') pageModel['created'] = created;
+        if (typeof order != 'undefined') pageModel['order'] = order;
+        if (typeof slug != 'undefined') pageModel['slug'] = slug;
+
+
+        var newPage = new PageModel(pageModel),
+            query = {_id: _id};
+
+        PageModel.update(query, { $set: pageModel}, function (err) {
+            if (err) {
+                response['status'] = "error";
+                response['content'] = err;
+
+                res.json(response);
+            } else {
+                response['status'] = "ok";
+
+                res.json(response);
+            }
+        });
+
 
     },
 

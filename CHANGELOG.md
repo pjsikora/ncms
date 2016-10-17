@@ -1,7 +1,18 @@
+2016.10.17
+==================================
+Admin panel:
+- Move logic to AdminPanelComponent (not finished - change markup)
+- Changes in styles
+
+FE:
+- simple page view by page_id and page_slug
+
+
+
 2016.10.16
 ==================================
 Admin panel:
-
+- Adding keywords/description (SEO)
 
 
 2016.10.15
