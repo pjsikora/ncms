@@ -11,10 +11,10 @@ class PageFormComponent {
 
         var form = `<h3>Page form</h3>
                 <input type="text" class="hidden" id="parent_id" val="${parent_id}">
-                <input type="text" placeholder="Name" value="" id="name">
-                <input type="text" placeholder="SEO Keywords" value="" id="page_keywords">
-                <input type="text" placeholder="SEO Description" value="" id="page_description">
-                <input type="text" placeholder="slug" value="" id="slug">
+                <input type="text" placeholder="Name" value="${(typeof data.name == 'undefined') ? '' : data.name}" id="name">
+                <input type="text" placeholder="SEO Keywords" value="${(typeof data.page_keywords == 'undefined') ? '' : data.page_keywords}" id="page_keywords">
+                <input type="text" placeholder="SEO Description" value="${(typeof data.page_description == 'undefined') ? '' : data.page_description}" id="page_description">
+                <input type="text" placeholder="slug" value="${(typeof data.slug == 'undefined') ? '' : data.slug}" id="slug">
                 <input type="checkbox" id="is_visible"><label for="is_visible">Visible</label>
                 <select name="" id="">
                 

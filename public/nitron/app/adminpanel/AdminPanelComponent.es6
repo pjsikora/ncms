@@ -69,7 +69,9 @@ class AdminPanelComponent {
                         html += '<h2>Contents</h2><ul>';
 
                         contents.content.forEach(function (el) {
-                            html += `<li>${el.name}
+                            console.log(el);
+
+                            html += `<li>Name: ${el.name}<br>Content: ${el.content}
                                     <span class="fa fa-pencil" data-function="edit"></span>
                                     <span class="fa fa-trash-o" data-function="delete"></span>
                                     <span class="fa fa-plus-square-o" data-function="addContent"></span>
@@ -164,8 +166,9 @@ class AdminPanelComponent {
             Preloader.show();
 
             var sendData = {
-                name: document.getElementById('name').value,
-                page_id: document.getElementById('page_id').getAttribute('val'),
+                name: document.getElementById('contentform__name').value,
+                page_id: document.getElementById('contentform__page_id').getAttribute('val'),
+                content: document.getElementById('contentform__content').value,
                 order: 0
             }
 

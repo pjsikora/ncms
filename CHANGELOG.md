@@ -1,8 +1,17 @@
 2016.10.17
 ==================================
 Admin panel:
+- Adding content with "content" attribute
+
+FE:
+- simple page view by page_id and page_slug (correct views)
+
+
+2016.10.17
+==================================
+Admin panel:
 - Move logic to AdminPanelComponent (not finished - change markup)
-- Changes in styles
+- Changes in styles (forms)
 
 FE:
 - simple page view by page_id and page_slug

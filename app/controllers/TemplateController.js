@@ -26,19 +26,28 @@ var TemplateController = {
     },
 
     renderPage: function (req, res) {
-        ND_Content.find({page_id: req.query.page_id}, function (err, page) {
+        ND_Page.findOne({_id: req.params.page_id}, function (err, page) {
             if (err) {
                 res.render('page', {title: 'error', message: 'no content'})
             } else {
-                ND_Content.find({page_id: req.query.id}, function (err, content) {
+                if (page == null) {
+                    res.render('404');
+                } else {
 
-                    res.render('page', {
-                        title: req.params.page_id,
-                        content: req.content,
-                        seo_keywords: "keywords",
-                        seo_description: "desc"
-                    });
-                })
+                    ND_Content.find({page_id: page._id}, function (err, content) {
+                        res.render('page', {
+                            seo_title: page._id,
+                            page_id : page._id,
+                            title: page.slug,
+                            content: content,
+                            page_keywords: page.page_keywords,
+                            page_description: page.page_description,
+                        });
+                    })
+                }
+
+
+
 
 
             }
@@ -46,20 +55,24 @@ var TemplateController = {
     },
 
     renderPageBySlug: function (req, res) {
-        ND_Content.findOne({slug: req.query.slug}, function (err, page) {
+        ND_Page.findOne({slug: req.params.slug}, function (err, page) {
             if (err) {
                 res.render('page', {title: 'error', message: 'no page/content'})
             } else {
-                // ND_Content.find({page_id: req.query.id}, function (err, content) {
+                if (page == null) {
+                    res.render('404');
+                }
 
+                ND_Content.find({page_id: page._id}, function (err, content) {
                     res.render('page', {
-                        seo_title: page.page_id,
+                        seo_title: page._id,
+                        page_id : page._id,
                         title: req.params.slug,
-                        content: req.content,
+                        content: content,
                         page_keywords: page.page_keywords,
                         page_description: page.page_description,
                     });
-                // })
+                })
 
 
             }

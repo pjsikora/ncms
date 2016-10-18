@@ -6,5 +6,10 @@ html
 
     body
         h1= title
+        p Page id:
+            strong= page_id
 
-        p= content
+        each entry in content
+            div
+                h3= entry.name
+                p= entry.content

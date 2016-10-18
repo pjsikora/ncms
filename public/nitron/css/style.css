@@ -60,11 +60,13 @@ body {
 
 .content input[type="text"],
 .content select,
-.content button {
+.content button,
+.content textarea {
   border: 1px solid #000;
     border-radius: 0;
   padding: 10px;
   margin-bottom: 10px;
-  width: 100%; }
+  width: 100%;
+  resize: none; }
 
 /*# sourceMappingURL=style.css.map */
