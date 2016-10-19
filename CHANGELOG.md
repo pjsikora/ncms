@@ -1,4 +1,13 @@
-2016.10.17
+2016.10.19
+==================================
+Admin panel:
+- Adding page with refresh of right panel
+
+FE:
+- changes in styles
+
+
+2016.10.18
 ==================================
 Admin panel:
 - Adding content with "content" attribute

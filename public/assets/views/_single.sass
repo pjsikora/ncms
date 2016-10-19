@@ -1,0 +1,155 @@
+.single_article
+  margin: 0 auto
+  padding:
+    top: 58px
+
+  img
+    //width: 100%
+    height: auto
+    margin-bottom: -4px
+
+  a
+    color: black
+    +tdn
+
+  p
+    font:
+      family: "Open Sans", sans-serif
+      weight: 100
+      size: 16px
+
+.single_article__header
+  height: remCalc(465px)
+
+.single_article__content
+  max-width: remCalc(770px)
+  margin: 0 auto
+  padding: 0 remCalc(20px)
+
+
+.single_article__headline
+  top: 50%
+  left: 50%
+
+
+.single_article__authorname
+  position: relative
+  padding:
+    top: 13px
+  margin:
+    bottom: 50px
+
+  p
+    padding:
+      top: 0
+      bottom: 0
+      left: 68px
+    margin: 0
+
+.single_article__postatuhoravatar
+  img
+    width: 48px
+    height: 48px
+    top: 0
+    left: 0
+    position: absolute
+    border: 2px solid orange
+      radius: 50%
+
+
+
+
+.single_article__postdate
+  text-align: center
+  margin:
+    top: 5px
+
+.single_article__comments
+  max-width: 600px
+  margin: 0 auto
+  padding: 0 20px
+
+.single_article__taglist
+  a
+    +dib
+    color: #5b5c58
+    border:
+      radius: 5px
+    background: $c_gray
+    padding: 5px 16px
+    margin-right: 10px
+
+.comments_area
+  textarea
+    width: 100%
+    resize: none
+
+.single_article__book
+  position: relative
+.single_article__book__bg
+  background: #ebece4
+  transform: skew(-10deg,-4deg) scale(110%)
+  height: 100%
+
+.single_article__book__content
+  position: absolute
+  top: 0
+  width: 465px
+
+.single_article__book__getbook
+  background: #e08827
+  border:
+    radius: 10px
+
+
+.commentlist
+  list-style: none
+
+.comment__header
+  position: relative
+
+  img
+    border:
+      radius: 50%
+    width: 52px
+    height: 52px
+
+.comment__content
+  border: 1px solid #d6dbd4
+    left: 3px solid #fcc602
+  padding: 0 30px
+
+  p
+    font:
+      size: 22px
+    line-height: 1.5
+
+textarea
+  resize: none
+
+textarea,
+input[type="text"]
+  border: 1px solid #d6dbd4
+    radius: 5px
+  width: 100%
+
+  &:active
+    border: 2px solid #02befc
+
+
+input[type="submit"]
+  background: $c_orange
+  color: #292423
+  font:
+    size: 18px
+    family: $GLOBAL_p_font_family
+  height: 48px
+  padding: 0 35px
+  border: none
+    radius: 30px
+
+
+.comment-form-comment
+  textarea
+    margin:
+      bottom: 10px

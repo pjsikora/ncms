@@ -1,6 +1,6 @@
 class AdminPanelComponent {
     constructor() {
-        var pgl = new PageListComponent();
+        this.pgl = new PageListComponent();
 
         document.getElementById("pages").addEventListener("click",  (e) => {
             if (e.target && e.target.nodeName == "LI") {
@@ -11,7 +11,7 @@ class AdminPanelComponent {
                 if (e.target.dataset.function == "delete") {
                     ModalWindow.show('Are you sure you want to delete page: ' + e.target.parentNode.dataset.name);
                 } else if (e.target.dataset.function == "edit") {
-                    this.clickListenerSPANEdit(e);
+                    this.clickListenerSPANEditPage(e);
                 } else if (e.target.dataset.function == "addPage") {
                     this.clickListenerSPANCreatePage(e)
                 } else if (e.target.dataset.function == "addContent") {
@@ -21,6 +21,7 @@ class AdminPanelComponent {
         });
 
     }
+
 
     clickListenerLI(e) {
         var elID = e.target.dataset.id;
@@ -115,42 +116,60 @@ class AdminPanelComponent {
 
             console.log(sendData);
 
+
+
             PageServices.create(sendData).then(data => {
-                console.log(data);
-                Preloader.hide();
+                PageServices.update(sendData).then(data => {
+                    this.pgl.fetchData();
+                    Preloader.hide();
+                })
             })
 
         });
     }
 
-    clickListenerSPANEdit(e) {
-        var data = {
-            parent_id: id
-        }
 
-        document.getElementById('content').innerHTML = PageFormComponent.getHTML(data);
-        var button = document.getElementById('createPage');
+    clickListenerSPANEditPage(e) {
+        var id = e.target.parentNode.dataset.id;
 
-        button.addEventListener('click', e => {
-            console.log('Create element');
+        PageServices
+            .read(id)
+            .then(data => {
+                data = JSON.parse(data);
 
-            Preloader.show();
-            var sendData = {
-                name: document.getElementById('name').value,
-                parent_id: document.getElementById('parent_id').getAttribute('val'),
-                order: 0,
-                slug: document.getElementById('slug').value,
-                page_description: document.getElementById('page_description').value,
-                page_keywords: document.getElementById('page_keywords').value
-            }
+                if (data.status == "ok") {
+                    data = data.content[0];
+
+                    document.getElementById('content').innerHTML = PageFormComponent.getHTML(data);
+                    var button = document.getElementById('createPage');
+
+                    button.addEventListener('click', e => {
+                        Preloader.show();
+                        var sendData = {
+                            _id: id,
+                            name: document.getElementById('name').value,
+                            parent_id: document.getElementById('parent_id').getAttribute('val'),
+                            order: 0,
+                            slug: document.getElementById('slug').value,
+                            page_description: document.getElementById('page_description').value,
+                            page_keywords: document.getElementById('page_keywords').value
+                        }
 
 
-            PageServices.update({_id: id}, sendData).then(data => {
-                Preloader.hide();
+                        PageServices.update(sendData).then(data => {
+                            this.pgl.fetchData();
+                            Preloader.hide();
+                        })
+
+                    });
+                }
+
+
             })
 
-        });
+
     }
+
 
     clickListenerSPANCreateContent(e) {
         var id = e.target.parentNode.dataset.id;
@@ -172,10 +191,7 @@ class AdminPanelComponent {
                 order: 0
             }
 
-            console.log(sendData);
-
             ContentServices.create(sendData).then(data => {
-                console.log(data);
                 Preloader.hide();
             })
 

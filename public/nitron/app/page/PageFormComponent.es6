@@ -19,7 +19,7 @@ class PageFormComponent {
                 <select name="" id="">
                 
                 </select>
-            <button id="createPage">Create page</button>
+            <button id="createPage">Submit</button>
         `;
 
         return form;

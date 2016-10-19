@@ -41,7 +41,15 @@ body {
   padding: 5px; }
   .pages ul,
   .content ul {
-    margin: 0; }
+    list-style: none;
+    margin: 0;
+    padding: 0; }
+    .pages ul ul,
+    .content ul ul {
+      padding-left: 20px; }
+  .pages li,
+  .content li {
+    list-style: none; }
 
 .preloader {
   position: fixed;
