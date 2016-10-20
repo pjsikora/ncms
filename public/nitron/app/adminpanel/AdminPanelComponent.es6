@@ -2,14 +2,16 @@ class AdminPanelComponent {
     constructor() {
         this.pgl = new PageListComponent();
 
-        document.getElementById("pages").addEventListener("click",  (e) => {
+        document.getElementById("pages").addEventListener("click", (e) => {
+            console.log(e.target.parentNode.dataset.id);
+
             if (e.target && e.target.nodeName == "LI") {
                 this.clickListenerLI(e);
-            }
-
-            else if (e.target && e.target.nodeName == "SPAN") {
+            } else if (e.target && e.target.nodeName == "SPAN") {
                 if (e.target.dataset.function == "delete") {
                     ModalWindow.show('Are you sure you want to delete page: ' + e.target.parentNode.dataset.name);
+                } else if (e.target.dataset.function == "deleteHard") {
+                    this.clickHardDelete(e);
                 } else if (e.target.dataset.function == "edit") {
                     this.clickListenerSPANEditPage(e);
                 } else if (e.target.dataset.function == "addPage") {
@@ -21,7 +23,40 @@ class AdminPanelComponent {
         });
 
     }
+    //
+    // clickHardDelete(e) {
+    //
+    //     console.log(e.currentTarget);
+    // }
 
+    clickHardDelete(e) {
+        let mw = new ModalWindow();
+
+        mw.show('Are you sure you want to delete page: ' + e.target.parentNode.dataset.name, this.clickHardDelete, e);
+        // ModalWindow.show('Are you sure you want to delete page: ' + e.target.parentNode.dataset.name, this.clickHardDelete, e);
+
+        // var self = this;
+        //
+        // PageServices
+        //     .remove(e.target.parentNode.dataset.id)
+        //     .then(data => {
+        //         var data = JSON.parse(data),
+        //             status = data.status;
+        //
+        //         if (status == 'ok') {
+        //             let mw = new ModalWindow();
+        //             mw.show();
+        //             ModalWindow.hide();
+        //             this.pgl.fetchData();
+        //
+        //             // console.log(this)
+        //             // console.log(self)
+        //         } else {
+        //
+        //         }
+        //         console.log(data);
+        //     });
+    }
 
     clickListenerLI(e) {
         var elID = e.target.dataset.id;
@@ -115,7 +150,6 @@ class AdminPanelComponent {
             }
 
             console.log(sendData);
-
 
 
             PageServices.create(sendData).then(data => {

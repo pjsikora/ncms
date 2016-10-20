@@ -19,7 +19,7 @@ class PageServices {
         return AJAX.get("/api/pages/read?_id=" + id);
     }
 
-    static delete(id) {
-        return AJAX.get("/api/pages/delete?_id=" + id);
+    static remove(id) {
+        return AJAX.get("/api/pages/remove?_id=" + id);
     }
 }

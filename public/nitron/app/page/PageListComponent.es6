@@ -24,6 +24,7 @@ class PageListComponent {
                     ${el.name} 
                     <span class="fa fa-pencil" data-function="edit"></span>
                     <span class="fa fa-trash-o" data-function="delete"></span>
+                    <span class="fa fa-trash" data-function="deleteHard"></span>
                     <span class="fa fa-plus" data-function="addPage"></span>
                     <span class="fa fa-plus-square-o" data-function="addContent"></span>
                     <ul data-childrenof="${el._id}">${children}</ul>

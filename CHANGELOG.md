@@ -1,3 +1,12 @@
+2016.10.20
+==================================
+BE API:
+- User / UserGroup prototype of model + controller
+
+Admin panel:
+- ModalWindow instantiated version (instead static methods)
+
+
 2016.10.19
 ==================================
 Admin panel:
