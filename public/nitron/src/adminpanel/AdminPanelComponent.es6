@@ -16,6 +16,8 @@ class AdminPanelComponent {
                     this.clickListenerSPANEditPage(e);
                 } else if (e.target.dataset.function == "addPage") {
                     this.clickListenerSPANCreatePage(e)
+                } else if (e.target.dataset.function == "addRootPage") {
+                    this.clickListenerSPANCreateRoot(e)
                 } else if (e.target.dataset.function == "addContent") {
                     this.clickListenerSPANCreateContent(e);
                 }
@@ -30,9 +32,10 @@ class AdminPanelComponent {
     // }
 
     clickHardDelete(e) {
-        let mw = new ModalWindow();
+        let windowContent = 'Are you sure you want to delete page: ' + e.target.parentNode.dataset.name,
+            mw = new ModalWindow(windowContent);
 
-        mw.show('Are you sure you want to delete page: ' + e.target.parentNode.dataset.name, this.clickHardDelete, e);
+        mw.show();
         // ModalWindow.show('Are you sure you want to delete page: ' + e.target.parentNode.dataset.name, this.clickHardDelete, e);
 
         // var self = this;
@@ -143,6 +146,42 @@ class AdminPanelComponent {
             var sendData = {
                 name: document.getElementById('name').value,
                 parent_id: document.getElementById('parent_id').getAttribute('val'),
+                order: 0,
+                slug: document.getElementById('slug').value,
+                page_description: document.getElementById('page_description').value,
+                page_keywords: document.getElementById('page_keywords').value
+            }
+
+            console.log(sendData);
+
+
+            PageServices.create(sendData).then(data => {
+                PageServices.update(sendData).then(data => {
+                    this.pgl.fetchData();
+                    Preloader.hide();
+                })
+            })
+
+        });
+    }
+
+    clickListenerSPANCreateRoot(e) {
+        var id = e.target.parentNode.dataset.id;
+
+        var data = {
+            parent_id: id
+        }
+
+        document.getElementById('content').innerHTML = PageFormComponent.getHTML(data);
+        var button = document.getElementById('createPage');
+
+        button.addEventListener('click', e => {
+            console.log('Create element');
+
+            Preloader.show();
+            var sendData = {
+                name: document.getElementById('name').value,
+                parent_id: 0,
                 order: 0,
                 slug: document.getElementById('slug').value,
                 page_description: document.getElementById('page_description').value,

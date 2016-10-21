@@ -2,8 +2,8 @@ var express = require('express'),
     router = express.Router(),
     pug = require('pug'),
 
-    ND_Content = require('../models/ContentModel'),
-    ND_Page = require('../models/PageModel');
+    ND_Content = require('../models/Content'),
+    ND_Page = require('../models/Page');
 
 var TemplateController = {
     renderHomepage: function (req, res) {

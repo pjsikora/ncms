@@ -1,6 +1,16 @@
 2016.10.20
 ==================================
 BE API:
+- User / UserGroup model update
+
+Admin panel:
+- Preparation for Babel.js
+
+
+
+2016.10.20
+==================================
+BE API:
 - User / UserGroup prototype of model + controller
 
 Admin panel:

@@ -1,36 +1,55 @@
 var mongoose = require('mongoose');
 
-var ND_Content__model = {
-    id: String,
+
+var PageModel = {
+    id: Number,
+
     parent_id: {
         type: String,
         required: true
     },
-    created: {
-        type: Date,
-        // required: true
-    },
+
     order: {
         type: Number,
         required: true
     },
-    content: String,
-    page_id: {
-        type: String,
-        required: true
+    slug: {
+        type:  String
     },
+    created: Date,
+
     is_deleted: {
         type: Number,
         derault: false
     },
+
     is_visible: {
         type: Number,
         derault: true
     },
+
     name: {
         type: String,
         required: true
+    },
+
+
+
+    // SEO
+    page_author: {
+        type: String
+    },
+    page_description: {
+        type: String
+    },
+    page_keywords: {
+        type: String
+    },
+    page_title: {
+        type: String
     }
+
 };
 
-module.exports = mongoose.model('ContentModel', ND_Content__model);
+
+module.exports = mongoose.model('Page', PageModel);

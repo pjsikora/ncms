@@ -17,6 +17,8 @@ class ContentFormComponent {
                 <select name="" id="">
                 
                 </select>
+                
+                
             <button id="createPage">Create content</button>
         `;
 

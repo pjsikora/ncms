@@ -1,4 +1,4 @@
-var PageModel = require('../models/PageModel');
+var PageModel = require('../models/Page');
 
 
 var PageController = {
@@ -148,6 +148,26 @@ var PageController = {
                 response['status'] = "ok";
 
                 res.json(response);
+            }
+        });
+    },
+
+
+
+    hasChild: function(id) {
+        var response = false;
+
+        PageModel.find({parent_id: id}, function(err) {
+            if (err) {
+                response['status'] = "error";
+                response['content'] = err;
+
+                res.json(response);
+            } else {
+                // response['content'] = nd_pages;
+                if (nd_pages.length == 0) {
+                    return response;
+                }
             }
         });
     }

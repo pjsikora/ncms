@@ -32,7 +32,7 @@ class PageListComponent {
     }
 
     draw(data, element) {
-        var html = "<h2>Pages</h2><ul>",
+        var html = `<h2>Pages</h2><span class="fa fa-plus" data-function="addRootPage"></span><ul>`,
             elArray = data.children;
 
         for (var key in elArray) {

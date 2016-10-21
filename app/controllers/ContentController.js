@@ -1,4 +1,4 @@
-var ContentModel = require('../models/ContentModel');
+var ContentModel = require('../models/Content');
 
 var ContentController = {
     list: function (req, res) {
