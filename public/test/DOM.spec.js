@@ -37,6 +37,13 @@ describe('AJAX', function () {
 
 
 describe('BE -> AJAX communication', function () {
+    beforeEach(function() {
+        jasmine.Ajax.install();
+    });
+    afterEach(function() {
+        jasmine.Ajax.uninstall();
+    });
+
     it('get() - static method/funciton exists', function () {
         expect(typeof AJAX.get).toBe("function");
     });
