@@ -1,3 +1,12 @@
+2016.10.23
+==================================
+BE API:
+- Changes in structure of files
+- Adding config file
+- MochaJS draft
+
+
+
 2016.10.22
 ==================================
 BE API:
