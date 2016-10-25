@@ -245,13 +245,20 @@ class AdminPanelComponent {
 
 
     clickListenerSPANCreateContent(e) {
-        var id = e.target.parentNode.dataset.id;
+        var id = e.target.parentNode.dataset.id,
+            data = {
+                page_id: id
+            },
+            cf = new ContentFormComponent(document.getElementById('content'),data);
 
         var data = {
             page_id: id
         }
 
-        document.getElementById('content').innerHTML = ContentFormComponent.getHTML(data);
+        // document.getElementById('content').appendChild(DOM.domify(cf.getHTML(data)));
+
+        cf.init();
+
         var button = document.getElementById('createPage');
 
         button.addEventListener('click', e => {

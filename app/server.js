@@ -45,9 +45,9 @@ app.use(express.static('public')); // Public folder
 
 app.set('views', './app/views'); // Views path
 
-app.use(function(req, res, next){
-    res.status(404).render('404', {title: "Sorry, page not found"});
-});
+// app.use(function(req, res, next){
+//     res.status(404).render('404', {title: "Sorry, page not found"});
+// });
 
 app.set('view engine', 'pug'); // Use pug engine for FE
 

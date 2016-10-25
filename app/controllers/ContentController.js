@@ -28,7 +28,6 @@ var ContentController = {
             created = new Date(),
             response = {};
 
-        console.log('KUUUURWAAA');
         var newContent = new ContentModel({
             parent_id: parent_id,
             content: content,
@@ -40,7 +39,6 @@ var ContentController = {
 
             name: name
         });
-        console.log(JSON.stringify(newContent));
 
         newContent.save(function (err) {
             if (err) {
