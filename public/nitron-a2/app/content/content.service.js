@@ -11,26 +11,26 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
 require('rxjs/add/operator/toPromise');
-var PageService = (function () {
-    function PageService(http) {
+var ContentService = (function () {
+    function ContentService(http) {
         this.http = http;
         this.headers = new http_1.Headers({ 'Content-Type': 'application/json' });
-        this.pagesUrl = 'http://localhost:8888/api/pages/list'; // URL to web api
+        this.pagesUrl = 'http://localhost:8888/api/contents/'; // URL to web api
     }
-    PageService.prototype.getPages = function () {
-        return this.http.get(this.pagesUrl)
+    ContentService.prototype.getPages = function (contentID) {
+        return this.http.get(this.pagesUrl + 'read?_id=' + contentID)
             .toPromise()
             .catch(this.handleError);
     };
-    PageService.prototype.handleError = function (error) {
+    ContentService.prototype.handleError = function (error) {
         console.error('An error occurred', error); // for demo purposes only
         return Promise.reject(error.message || error);
     };
-    PageService = __decorate([
+    ContentService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [http_1.Http])
-    ], PageService);
-    return PageService;
+    ], ContentService);
+    return ContentService;
 }());
-exports.PageService = PageService;
-//# sourceMappingURL=page.service.js.map
+exports.ContentService = ContentService;
+//# sourceMappingURL=content.service.js.map

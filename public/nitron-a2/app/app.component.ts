@@ -1,10 +1,15 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 
-import {PageListComponent} from './page/pagelist.component';
+// import {PageListComponent} from './page/pagelist.component';
 
 @Component({
     selector: 'my-app',
-    template: '<h1>Nitron</h1>',
+    template: `
+        <section class="app_header">Nitron</section>
+        <section class="app_keeper">
+        <router-outlet></router-outlet>
+        </section>
+    `,
 
 
 })

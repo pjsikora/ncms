@@ -1,19 +1,19 @@
 import { Injectable } from '@angular/core';
 import { Headers, Http } from '@angular/http';
 
-import { Page } from './page';
+import { Content } from './content';
 
 import 'rxjs/add/operator/toPromise';
 
 @Injectable()
-export class PageService {
+export class ContentService {
     private headers = new Headers({'Content-Type': 'application/json'});
-    private pagesUrl = 'http://localhost:8888/api/pages/list';  // URL to web api
+    private pagesUrl = 'http://localhost:8888/api/contents/';  // URL to web api
 
     constructor(private http: Http) { }
 
-    getPages(): Promise<Page[]> {
-        return this.http.get(this.pagesUrl)
+    getPages(contentID): Promise<Content[]> {
+        return this.http.get(this.pagesUrl+'read?_id='+contentID)
             .toPromise()
             // .then(response => response.json().data as Page[])
             .catch(this.handleError);

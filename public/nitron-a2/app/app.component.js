@@ -9,13 +9,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+// import {PageListComponent} from './page/pagelist.component';
 var AppComponent = (function () {
     function AppComponent() {
     }
     AppComponent = __decorate([
         core_1.Component({
             selector: 'my-app',
-            template: '<h1>Nitron</h1>',
+            template: "\n        <section class=\"app_header\">Nitron</section>\n        <section class=\"app_keeper\">\n        <router-outlet></router-outlet>\n        </section>\n    ",
         }), 
         __metadata('design:paramtypes', [])
     ], AppComponent);
