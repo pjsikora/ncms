@@ -11,23 +11,6 @@ import {PageService} from './page.service';
 })
 
 export class PageListComponent implements OnInit {
-    // pages = [{
-    //     _id: 'id of page',
-    //     name: 'name of page',
-    //     parent_id: 'parent id of page',
-    //     order: '2',
-    //     created: 'created of page',
-    //     is_deleted: 'false',
-    //     is_visible: 'false',
-    // }, {
-    //     _id: 'id of page',
-    //     name: 'name of page 2',
-    //     parent_id: 'parent id of page',
-    //     order: '2',
-    //     created: 'created of page',
-    //     is_deleted: 'false',
-    //     is_visible: 'false',
-    // }]
     pages = []
 
     constructor(private pageService: PageService) {
@@ -38,9 +21,9 @@ export class PageListComponent implements OnInit {
         this.pageService
             .getPages()
             .then(response => {
-                this.pages = response.json().content;
+                this.pages = response;
                 console.log("data")
-                console.log(response.json().content)
+                console.log(response);
             });
     }
 

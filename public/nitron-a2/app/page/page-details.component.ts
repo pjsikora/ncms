@@ -14,6 +14,9 @@ import {ContentService} from '../content/content.service';
             </div>
             <div class="medium-9 columns">
                 <h1>Page details</h1>
+                <p>{{page.name}}</p>
+                
+                <section *ngFor="let content of contents">{{content.name}}</section>
             </div>
 
         `,
@@ -32,10 +35,16 @@ export class PageDetailsComponent implements OnInit {
 
     ngOnInit(): void {
         this.route.params.forEach((params: Params) => {
-            this.page.name = params['_id'];
-            let id = +params['id'];
+            let id = params['_id'];
+            this.page.name = id;
+            // let id = +params['_id'];
+            console.log(id);
 
-            this.contentService.
+            this.contentService.getContentsOfPage(id)
+                .then(response => {
+                    console.log(response);
+                    this.contents = response;
+                })
 
             // this.heroService.getHero(id)
             //     .then(hero => this.hero = hero);

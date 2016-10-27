@@ -20,8 +20,12 @@ var PageService = (function () {
     PageService.prototype.getPages = function () {
         return this.http.get(this.pagesUrl)
             .toPromise()
+            .then(function (response) { return response.json().content; })
             .catch(this.handleError);
     };
+    PageService.prototype.delete = function () { };
+    PageService.prototype.create = function () { };
+    PageService.prototype.update = function () { };
     PageService.prototype.handleError = function (error) {
         console.error('An error occurred', error); // for demo purposes only
         return Promise.reject(error.message || error);

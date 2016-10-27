@@ -10,11 +10,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var page_1 = require('./page');
+var router_1 = require('@angular/router');
 var PageListItemComponent = (function () {
-    function PageListItemComponent() {
+    function PageListItemComponent(router) {
+        this.router = router;
     }
     PageListItemComponent.prototype.showDetails = function () {
-        console.log('showDetails ' + this.page._id);
+        var link = ['/page/details/', this.page._id];
+        this.router.navigate(link);
     };
     PageListItemComponent.prototype.edit = function () {
         console.log('edit');
@@ -40,7 +43,7 @@ var PageListItemComponent = (function () {
             selector: 'page-list-item',
             template: "<li><span (click)=\"showDetails()\">{{page.name}}</span>\n                    <span class=\"fa fa-pencil\" data-function=\"edit\" (click)=\"edit()\"></span>\n                    <span class=\"fa fa-trash-o\" data-function=\"delete\" (click)=\"delete()\"></span>\n                    <span class=\"fa fa-trash\" data-function=\"deleteHard\" (click)=\"deleteHard()\"></span>\n                    <span class=\"fa fa-plus\" data-function=\"addPage\" (click)=\"addPage()\"></span>\n                    <span class=\"fa fa-plus-square-o\" data-function=\"addContent\" (click)=\"addContent()\"></span>\n\n                    </li>",
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [router_1.Router])
     ], PageListItemComponent);
     return PageListItemComponent;
 }());

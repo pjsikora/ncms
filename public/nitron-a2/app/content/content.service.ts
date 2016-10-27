@@ -12,10 +12,13 @@ export class ContentService {
 
     constructor(private http: Http) { }
 
-    getPages(contentID): Promise<Content[]> {
-        return this.http.get(this.pagesUrl+'read?_id='+contentID)
+    getContentsOfPage(contentID): Promise<Content[]> {
+        return this.http.get(this.pagesUrl+'read?page_id='+contentID)
             .toPromise()
-            // .then(response => response.json().data as Page[])
+            .then(response => {
+                console.log(response.json().content)
+                response.json().content
+            })
             .catch(this.handleError);
     }
 

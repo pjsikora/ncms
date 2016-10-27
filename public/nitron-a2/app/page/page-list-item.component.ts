@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Page } from './page';
+import {Router} from '@angular/router';
 
 @Component({
     selector: 'page-list-item',
@@ -18,8 +19,11 @@ export class PageListItemComponent {
     page: Page;
 
 
+    constructor(private router:Router) {}
+
     showDetails() {
-        console.log('showDetails '+this.page._id);
+        let link = ['/page/details/', this.page._id];
+        this.router.navigate(link);
     }
 
     edit() {

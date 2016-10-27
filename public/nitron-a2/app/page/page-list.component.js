@@ -13,23 +13,6 @@ var page_service_1 = require('./page.service');
 var PageListComponent = (function () {
     function PageListComponent(pageService) {
         this.pageService = pageService;
-        // pages = [{
-        //     _id: 'id of page',
-        //     name: 'name of page',
-        //     parent_id: 'parent id of page',
-        //     order: '2',
-        //     created: 'created of page',
-        //     is_deleted: 'false',
-        //     is_visible: 'false',
-        // }, {
-        //     _id: 'id of page',
-        //     name: 'name of page 2',
-        //     parent_id: 'parent id of page',
-        //     order: '2',
-        //     created: 'created of page',
-        //     is_deleted: 'false',
-        //     is_visible: 'false',
-        // }]
         this.pages = [];
         console.log(this.pages);
     }
@@ -38,9 +21,9 @@ var PageListComponent = (function () {
         this.pageService
             .getPages()
             .then(function (response) {
-            _this.pages = response.json().content;
+            _this.pages = response;
             console.log("data");
-            console.log(response.json().content);
+            console.log(response);
         });
     };
     PageListComponent.prototype.ngOnInit = function () {

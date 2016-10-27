@@ -25,12 +25,15 @@ var PageDetailsComponent = (function () {
     PageDetailsComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.route.params.forEach(function (params) {
-            _this.page.name = params['_id'];
-            var id = +params['id'];
-            _this.contentService.
-                // this.heroService.getHero(id)
-                //     .then(hero => this.hero = hero);
-            ;
+            var id = params['_id'];
+            _this.page.name = id;
+            // let id = +params['_id'];
+            console.log(id);
+            _this.contentService.getContentsOfPage(id)
+                .then(function (response) {
+                console.log(response);
+                _this.contents = response;
+            });
             // this.heroService.getHero(id)
             //     .then(hero => this.hero = hero);
         });
@@ -39,7 +42,7 @@ var PageDetailsComponent = (function () {
     PageDetailsComponent = __decorate([
         core_1.Component({
             selector: 'page-form',
-            template: "<div class=\"medium-3 columns\">\n                <page-list></page-list>\n            </div>\n            <div class=\"medium-9 columns\">\n                <h1>Page details</h1>\n            </div>\n\n        ",
+            template: "<div class=\"medium-3 columns\">\n                <page-list></page-list>\n            </div>\n            <div class=\"medium-9 columns\">\n                <h1>Page details</h1>\n                <p>{{page.name}}</p>\n                \n                <section *ngFor=\"let content of contents\">{{content.name}}</section>\n            </div>\n\n        ",
         }), 
         __metadata('design:paramtypes', [page_service_1.PageService, content_service_1.ContentService, router_1.ActivatedRoute, common_1.Location])
     ], PageDetailsComponent);

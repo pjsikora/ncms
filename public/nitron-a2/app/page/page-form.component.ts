@@ -25,16 +25,12 @@ export class PageFormComponent implements OnInit {
                 private location: Location) {
     }
 
-
     ngOnInit(): void {
         this.route.params.forEach((params: Params) => {
             console.log('params')
             console.log(params)
             this.page.name = params['_id'];
             let id = +params['id'];
-            // this.heroService.getHero(id)
-            //     .then(hero => this.hero = hero);
         });
-        // this.getPages();
     }
 }

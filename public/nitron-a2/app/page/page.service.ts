@@ -15,9 +15,13 @@ export class PageService {
     getPages(): Promise<Page[]> {
         return this.http.get(this.pagesUrl)
             .toPromise()
-            // .then(response => response.json().data as Page[])
+            .then(response => response.json().content)
             .catch(this.handleError);
     }
+
+    delete() {}
+    create() {}
+    update() {}
 
     private handleError(error: any): Promise<any> {
         console.error('An error occurred', error); // for demo purposes only

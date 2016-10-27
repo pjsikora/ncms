@@ -17,9 +17,13 @@ var ContentService = (function () {
         this.headers = new http_1.Headers({ 'Content-Type': 'application/json' });
         this.pagesUrl = 'http://localhost:8888/api/contents/'; // URL to web api
     }
-    ContentService.prototype.getPages = function (contentID) {
-        return this.http.get(this.pagesUrl + 'read?_id=' + contentID)
+    ContentService.prototype.getContentsOfPage = function (contentID) {
+        return this.http.get(this.pagesUrl + 'read?page_id=' + contentID)
             .toPromise()
+            .then(function (response) {
+            console.log(response.json().content);
+            response.json().content;
+        })
             .catch(this.handleError);
     };
     ContentService.prototype.handleError = function (error) {

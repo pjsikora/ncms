@@ -26,10 +26,7 @@ var PageFormComponent = (function () {
             console.log(params);
             _this.page.name = params['_id'];
             var id = +params['id'];
-            // this.heroService.getHero(id)
-            //     .then(hero => this.hero = hero);
         });
-        // this.getPages();
     };
     PageFormComponent = __decorate([
         core_1.Component({
