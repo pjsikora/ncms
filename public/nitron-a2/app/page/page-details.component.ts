@@ -45,10 +45,6 @@ export class PageDetailsComponent implements OnInit {
                     console.log(response);
                     this.contents = response;
                 })
-
-            // this.heroService.getHero(id)
-            //     .then(hero => this.hero = hero);
         });
-        // this.getPages();
     }
 }
