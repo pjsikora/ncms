@@ -17,15 +17,15 @@ var ContentService = (function () {
         this.headers = new http_1.Headers({ 'Content-Type': 'application/json' });
         this.pagesUrl = 'http://localhost:8888/api/contents/'; // URL to web api
     }
-    ContentService.prototype.getContentsOfPage = function (contentID) {
-        return this.http.get(this.pagesUrl + 'read?page_id=' + contentID)
-            .toPromise()
-            .then(function (response) {
-            console.log(response.json().content);
-            response.json().content;
-        })
-            .catch(this.handleError);
-    };
+    // getContentsOfPage(contentID): Promise<Content[]> {
+    //     return this.http.get(this.pagesUrl+'read?page_id='+contentID)
+    //         .toPromise()
+    //         .then(response => {
+    //             console.log(response.json().content)
+    //             response.json().content
+    //         })
+    //         .catch(this.handleError);
+    // }
     ContentService.prototype.handleError = function (error) {
         console.error('An error occurred', error); // for demo purposes only
         return Promise.reject(error.message || error);

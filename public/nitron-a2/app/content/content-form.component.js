@@ -31,7 +31,7 @@ var ContentFormComponent = (function () {
     ContentFormComponent = __decorate([
         core_1.Component({
             selector: 'page-form',
-            template: "<h1>Page form</h1>\n        <input value=\"{{page.name}}\" placeholder=\"name\">\n        ",
+            template: "<h1>Page form</h1>\n        <form action=\"\">\n            <div class=\"row\">\n                <div class=\"medium-12 columns\">\n                    <label for=\"\">Name\n                        <input type=\"text\" value=\"{{page.name}}\" placeholder=\"name\">\n                    </label>\n                </div>\n            </div>\n        \n        </form>\n        \n        ",
         }), 
         __metadata('design:paramtypes', [content_service_1.ContentService, router_1.ActivatedRoute, common_1.Location])
     ], ContentFormComponent);

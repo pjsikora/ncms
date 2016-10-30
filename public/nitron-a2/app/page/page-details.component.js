@@ -19,7 +19,6 @@ var PageDetailsComponent = (function () {
         this.contentService = contentService;
         this.route = route;
         this.location = location;
-        this.page = { name: 'ding' };
         this.contents = [];
     }
     PageDetailsComponent.prototype.ngOnInit = function () {
@@ -29,11 +28,11 @@ var PageDetailsComponent = (function () {
             _this.page._id = id;
             // let id = +params['_id'];
             console.log(id);
-            _this.contentService.getContentsOfPage(id)
-                .then(function (response) {
-                console.log(response);
-                _this.contents = response;
-            });
+            // this.contentService.getContentsOfPage(id)
+            //     .then(response => {
+            //         console.log(response);
+            //         this.contents = response;
+            //     })
         });
     };
     PageDetailsComponent = __decorate([

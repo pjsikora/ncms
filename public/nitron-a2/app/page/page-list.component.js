@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var page_service_1 = require('./page.service');
+// import {TranslatePipe} from '../l18n/index';
 var PageListComponent = (function () {
     function PageListComponent(pageService) {
         this.pageService = pageService;
@@ -28,11 +29,12 @@ var PageListComponent = (function () {
     };
     PageListComponent.prototype.ngOnInit = function () {
         this.getPages();
+        // this._translate.use('pl')
     };
     PageListComponent = __decorate([
         core_1.Component({
             selector: 'page-list',
-            template: "<h1>Page list</h1>\n        <ul>\n                <page-list-item *ngFor=\"let page of pages\" [page]=\"page\"></page-list-item>\n        </ul>",
+            template: "<h1>Pages list</h1>\n        <ul>\n                <page-list-item *ngFor=\"let page of pages\" [page]=\"page\"></page-list-item>\n        </ul>",
         }), 
         __metadata('design:paramtypes', [page_service_1.PageService])
     ], PageListComponent);

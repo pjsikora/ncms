@@ -2,9 +2,11 @@ import {Component, OnInit} from '@angular/core';
 
 import {PageService} from './page.service';
 
+// import {TranslatePipe} from '../l18n/index';
+
 @Component({
     selector: 'page-list',
-    template: `<h1>Page list</h1>
+    template: `<h1>Pages list</h1>
         <ul>
                 <page-list-item *ngFor="let page of pages" [page]="page"></page-list-item>
         </ul>`,
@@ -29,5 +31,6 @@ export class PageListComponent implements OnInit {
 
     ngOnInit(): void {
         this.getPages();
+        // this._translate.use('pl')
     }
 }

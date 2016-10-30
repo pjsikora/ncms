@@ -5,6 +5,7 @@ import {ActivatedRoute, Params} from '@angular/router';
 
 import {PageService} from './page.service';
 import {ContentService} from '../content/content.service';
+import {Page} from "./page";
 
 @Component({
     selector: 'page-form',
@@ -50,7 +51,7 @@ import {ContentService} from '../content/content.service';
 })
 
 export class PageDetailsComponent implements OnInit {
-    page = {name: 'ding'}
+    page:Page;
     contents = [];
 
     constructor(private pageService: PageService,
@@ -67,11 +68,11 @@ export class PageDetailsComponent implements OnInit {
             // let id = +params['_id'];
             console.log(id);
 
-            this.contentService.getContentsOfPage(id)
-                .then(response => {
-                    console.log(response);
-                    this.contents = response;
-                })
+            // this.contentService.getContentsOfPage(id)
+            //     .then(response => {
+            //         console.log(response);
+            //         this.contents = response;
+            //     })
         });
     }
 }

@@ -7,7 +7,17 @@ import {ContentService} from './content.service';
 @Component({
     selector: 'page-form',
     template: `<h1>Page form</h1>
-        <input value="{{page.name}}" placeholder="name">
+        <form action="">
+            <div class="row">
+                <div class="medium-12 columns">
+                    <label for="">Name
+                        <input type="text" value="{{page.name}}" placeholder="name">
+                    </label>
+                </div>
+            </div>
+        
+        </form>
+        
         `,
 })
 

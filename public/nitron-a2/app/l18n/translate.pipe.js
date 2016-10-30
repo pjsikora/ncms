@@ -1,3 +1,4 @@
+// app/translate/translate.pipe.ts
 "use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -9,21 +10,25 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-// import { TranslateService } from './l18n/index';
-var AppComponent = (function () {
-    function AppComponent() {
+var translate_service_1 = require('./translate.service'); // our translate service
+var TranslatePipe = (function () {
+    function TranslatePipe(_translate) {
+        this._translate = _translate;
     }
-    AppComponent.prototype.ngOnInit = function () {
-        // this._translate.use('pl');
+    TranslatePipe.prototype.transform = function (value, args) {
+        if (!value)
+            return;
+        return this._translate.instant(value);
     };
-    AppComponent = __decorate([
-        core_1.Component({
-            selector: 'my-app',
-            template: "\n        <section class=\"app_header\">Nitron </section>\n        <section class=\"app_keeper\">\n        <router-outlet></router-outlet>\n        </section>\n    ",
+    TranslatePipe = __decorate([
+        // our translate service
+        core_1.Pipe({
+            name: 'translate',
+            pure: false // impure pipe, update value when we change language
         }), 
-        __metadata('design:paramtypes', [])
-    ], AppComponent);
-    return AppComponent;
+        __metadata('design:paramtypes', [translate_service_1.TranslateService])
+    ], TranslatePipe);
+    return TranslatePipe;
 }());
-exports.AppComponent = AppComponent;
-//# sourceMappingURL=app.component.js.map
+exports.TranslatePipe = TranslatePipe;
+//# sourceMappingURL=translate.pipe.js.map

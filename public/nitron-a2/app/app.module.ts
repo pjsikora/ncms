@@ -3,23 +3,30 @@ import {BrowserModule} from '@angular/platform-browser';
 import {FormsModule}   from '@angular/forms';
 import {HttpModule}    from '@angular/http';
 
+// import {TranslateModule, TranslateService} from 'ng2-translate';
 
 // App
 import {AppComponent}   from './app.component';
 
-
 // Pages
-import {PageService} from './page/page.service';
-
-import {PageFormComponent} from './page/page-form.component';
-import {PageListComponent} from './page/page-list.component';
-import {PageListItemComponent} from './page/page-list-item.component';
-import {PageDetailsComponent} from './page/page-details.component';
-
+import {
+    PageService,
+    PageFormComponent,
+    PageListComponent,
+    PageListItemComponent,
+    PageDetailsComponent
+} from './page/index';
 
 // Contents
-import {ContentService} from "./content/content.service";
+import {
+    ContentService,
+    ContentFormComponent
+} from "./content/index";
 
+//
+// import { TRANSLATION_PROVIDERS,
+//     TranslatePipe,
+//     TranslateService }   from './l18n/index';
 
 // Router
 import {AppRoutingModule} from './app-routing.module';
@@ -31,21 +38,38 @@ import {AppRoutingModule} from './app-routing.module';
         BrowserModule,
         FormsModule,
         HttpModule,
-        AppRoutingModule
+        AppRoutingModule,
+
+        // TranslateModule.forRoot({
+        // })
     ],
     declarations: [
         AppComponent,
+
         PageListComponent,
         PageListItemComponent,
         PageFormComponent,
-        PageDetailsComponent
+        PageDetailsComponent,
+
+        ContentFormComponent,
+
+        // TranslatePipe
     ],
     bootstrap: [AppComponent],
     providers: [
         PageService,
-        ContentService
+        ContentService,
+
+        // TRANSLATION_PROVIDERS,
+        // TranslateService
     ]
 })
 
 export class AppModule {
+    constructor(
+        // translate: TranslateService
+    ) {
+        // translate.setDefaultLang('en');
+        // translate.use('en');
+    }
 }

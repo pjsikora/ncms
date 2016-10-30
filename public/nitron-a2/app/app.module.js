@@ -12,20 +12,23 @@ var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
 var forms_1 = require('@angular/forms');
 var http_1 = require('@angular/http');
+// import {TranslateModule, TranslateService} from 'ng2-translate';
 // App
 var app_component_1 = require('./app.component');
 // Pages
-var page_service_1 = require('./page/page.service');
-var page_form_component_1 = require('./page/page-form.component');
-var page_list_component_1 = require('./page/page-list.component');
-var page_list_item_component_1 = require('./page/page-list-item.component');
-var page_details_component_1 = require('./page/page-details.component');
+var index_1 = require('./page/index');
 // Contents
-var content_service_1 = require("./content/content.service");
+var index_2 = require("./content/index");
+//
+// import { TRANSLATION_PROVIDERS,
+//     TranslatePipe,
+//     TranslateService }   from './l18n/index';
 // Router
 var app_routing_module_1 = require('./app-routing.module');
 var AppModule = (function () {
     function AppModule() {
+        // translate.setDefaultLang('en');
+        // translate.use('en');
     }
     AppModule = __decorate([
         core_1.NgModule({
@@ -34,19 +37,20 @@ var AppModule = (function () {
                 platform_browser_1.BrowserModule,
                 forms_1.FormsModule,
                 http_1.HttpModule,
-                app_routing_module_1.AppRoutingModule
+                app_routing_module_1.AppRoutingModule,
             ],
             declarations: [
                 app_component_1.AppComponent,
-                page_list_component_1.PageListComponent,
-                page_list_item_component_1.PageListItemComponent,
-                page_form_component_1.PageFormComponent,
-                page_details_component_1.PageDetailsComponent
+                index_1.PageListComponent,
+                index_1.PageListItemComponent,
+                index_1.PageFormComponent,
+                index_1.PageDetailsComponent,
+                index_2.ContentFormComponent,
             ],
             bootstrap: [app_component_1.AppComponent],
             providers: [
-                page_service_1.PageService,
-                content_service_1.ContentService
+                index_1.PageService,
+                index_2.ContentService,
             ]
         }), 
         __metadata('design:paramtypes', [])

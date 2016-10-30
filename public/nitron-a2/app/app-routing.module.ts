@@ -7,6 +7,10 @@ import {PageListComponent} from './page/page-list.component';
 import {PageDetailsComponent} from "./page/page-details.component";
 
 
+import {ContentFormComponent} from './content/content-form.component';
+
+
+
 const routes: Routes = [
     {
         path: '',
@@ -23,7 +27,12 @@ const routes: Routes = [
     {
         path: 'page/details/:_id',
         component: PageDetailsComponent
-    }
+    },
+    {
+        path: 'content/add',
+        component: ContentFormComponent
+    },
+
 ];
 @NgModule({
     imports: [ RouterModule.forRoot(routes) ],

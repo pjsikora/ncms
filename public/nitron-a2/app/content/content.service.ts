@@ -12,15 +12,15 @@ export class ContentService {
 
     constructor(private http: Http) { }
 
-    getContentsOfPage(contentID): Promise<Content[]> {
-        return this.http.get(this.pagesUrl+'read?page_id='+contentID)
-            .toPromise()
-            .then(response => {
-                console.log(response.json().content)
-                response.json().content
-            })
-            .catch(this.handleError);
-    }
+    // getContentsOfPage(contentID): Promise<Content[]> {
+    //     return this.http.get(this.pagesUrl+'read?page_id='+contentID)
+    //         .toPromise()
+    //         .then(response => {
+    //             console.log(response.json().content)
+    //             response.json().content
+    //         })
+    //         .catch(this.handleError);
+    // }
 
     private handleError(error: any): Promise<any> {
         console.error('An error occurred', error); // for demo purposes only

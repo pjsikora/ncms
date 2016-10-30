@@ -13,6 +13,7 @@ var router_1 = require('@angular/router');
 var page_form_component_1 = require('./page/page-form.component');
 var page_list_component_1 = require('./page/page-list.component');
 var page_details_component_1 = require("./page/page-details.component");
+var content_form_component_1 = require('./content/content-form.component');
 var routes = [
     {
         path: '',
@@ -29,7 +30,11 @@ var routes = [
     {
         path: 'page/details/:_id',
         component: page_details_component_1.PageDetailsComponent
-    }
+    },
+    {
+        path: 'content/add',
+        component: content_form_component_1.ContentFormComponent
+    },
 ];
 var AppRoutingModule = (function () {
     function AppRoutingModule() {
