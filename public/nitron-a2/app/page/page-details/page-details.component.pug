@@ -1,0 +1,41 @@
+.medium-3.columns
+    page-list
+.medium-9.columns
+    h1 Page details
+    p {{page.name}}
+    p
+        strong _id:
+        | 5809b45863afbb80a6509377
+        br
+        strong _created:
+        | {{page._created}}
+        br
+        strong is_deleted:
+        | {{page.is_deleted}}
+        br
+        strong is_visible:
+        | {{page.is_visible}}
+        br
+        strong name:
+        | {{page.name}}
+        br
+        strong order:
+        | {{page.oreder}}
+        br
+        strong parent_id:
+        | {{page.parent_id}}
+        br
+        strong slug: {{page.slug}}
+        br
+        strong page_keywords: {{page.page_keywords}}
+        br
+        strong page_description: {{page.page_description}}
+        br
+        br
+        strong
+            a(href='/{{page.slug}}/', target='blank') Go to page by slug
+        br
+        strong
+            a(href='/pageid/{{page._id}}', target='blank') Go to page by id
+        br
+    section(*ngfor='let content of contents') {{content.name}}

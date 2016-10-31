@@ -1,0 +1,36 @@
+.medium-3.columns
+    page-list
+.medium-9.columns
+    .row
+        .medium-12.columns
+            h1 Page form
+    form(action='')
+        .row
+            .medium-12.columns
+                label
+                    | Name
+                    input(type='text', value='{{page.name}}', placeholder='name')
+            .medium-12.columns
+                label
+                    | Parent_id
+                    input(type='text', value='{{page.parent_id}}', placeholder='parent_id')
+            .medium-12.columns
+                label
+                    | Order
+                    input(type='text', value='{{page.order}}', placeholder='order')
+            .medium-12.columns
+
+                label
+                    | Created
+                    input(type='text', value='{{page.created}}', placeholder='created')
+            .medium-12.columns
+                input#checkbox1(type='checkbox', value='{{page.is_deleted}}')
+                label(for='checkbox1') Is deleted (is_deleted)
+            .medium-12.columns
+                input#checkbox2(type='checkbox', value='{{page.is_visible}}')
+                label(for='checkbox2') Is visible (is_visible)
+            .medium-12.columns
+                button.button((click)='onSubmitClick()') Submit
+
+
+
