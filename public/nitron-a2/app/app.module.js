@@ -12,6 +12,7 @@ var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
 var forms_1 = require('@angular/forms');
 var http_1 = require('@angular/http');
+var forms_2 = require('@angular/forms');
 // import {TranslateModule, TranslateService} from 'ng2-translate';
 // App
 var app_component_1 = require('./app.component');
@@ -38,6 +39,7 @@ var AppModule = (function () {
                 forms_1.FormsModule,
                 http_1.HttpModule,
                 app_routing_module_1.AppRoutingModule,
+                forms_2.ReactiveFormsModule
             ],
             declarations: [
                 app_component_1.AppComponent,

@@ -10,26 +10,26 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
-var page_form_component_1 = require('./page/page-form.component');
-var page_list_component_1 = require('./page/page-list.component');
-var page_details_component_1 = require("./page/page-details.component");
+var index_1 = require('./page/index');
+// import {} from './page/page-list.component';
+// import {} from "./page/page-details.component";
 var content_form_component_1 = require('./content/content-form.component');
 var routes = [
     {
         path: '',
-        component: page_list_component_1.PageListComponent
+        component: index_1.PageListComponent
     },
     {
         path: 'page/add/:parent_id',
-        component: page_form_component_1.PageFormComponent
+        component: index_1.PageFormComponent
     },
     {
         path: 'page/edit/:_id',
-        component: page_form_component_1.PageFormComponent
+        component: index_1.PageFormComponent
     },
     {
         path: 'page/details/:_id',
-        component: page_details_component_1.PageDetailsComponent
+        component: index_1.PageDetailsComponent
     },
     {
         path: 'content/add',

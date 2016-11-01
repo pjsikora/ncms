@@ -4,7 +4,7 @@ function __export(m) {
 }
 __export(require("./page"));
 __export(require("./page.service"));
-__export(require("./page-details.component"));
+__export(require("./page-details/page-details.component"));
 __export(require("./page-form/page-form.component"));
 __export(require("./page-list.component"));
 __export(require("./page-list-item.component"));

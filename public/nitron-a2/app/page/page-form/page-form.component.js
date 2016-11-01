@@ -36,7 +36,7 @@ var PageFormComponent = (function () {
     PageFormComponent = __decorate([
         core_1.Component({
             selector: 'page-form',
-            templateUrl: './page-form.component.html',
+            templateUrl: 'page-form.component.html',
         }), 
         __metadata('design:paramtypes', [page_service_1.PageService, router_1.ActivatedRoute, common_1.Location])
     ], PageFormComponent);

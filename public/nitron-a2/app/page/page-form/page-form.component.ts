@@ -1,17 +1,19 @@
 import {Component, OnInit} from '@angular/core';
 import {Location} from '@angular/common';
 import {ActivatedRoute, Params} from '@angular/router';
+import {FormGroup, FormControl} from '@angular/forms';
+
 
 import {PageService} from './../page.service';
 import {Page} from "./../page";
 
 @Component({
     selector: 'page-form',
-    templateUrl: './page-form.component.html',
+    templateUrl: 'page-form.component.html',
 })
 
 export class PageFormComponent implements OnInit {
-    page:Page;
+    page: Page;
 
     constructor(private pageService: PageService,
                 private route: ActivatedRoute,
