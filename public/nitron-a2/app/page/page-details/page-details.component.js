@@ -38,7 +38,7 @@ var PageDetailsComponent = (function () {
     PageDetailsComponent = __decorate([
         core_1.Component({
             selector: 'page-form',
-            templateUrl: 'page-details.component.html',
+            template: "<div class=\"medium-3 columns\">\n            <page-list></page-list>\n        </div>\n        <div class=\"medium-9 columns\"><h1>Page details</h1>\n            <p>{{page.name}}</p>\n            <p><strong>_id:</strong>5809b45863afbb80a6509377<br/><strong>_created:</strong>{{page._created}}<br/><strong>is_deleted:</strong>{{page.is_deleted}}<br/><strong>is_visible:</strong>{{page.is_visible}}<br/><strong>name:</strong>{{page.name}}<br/><strong>order:</strong>{{page.oreder}}<br/><strong>parent_id:</strong>{{page.parent_id}}<br/><strong>slug:\n                {{page.slug}}</strong><br/><strong>page_keywords: {{page.page_keywords}}</strong><br/><strong>page_description:\n                {{page.page_description}}</strong><br/><br/><strong><a href=\"/{{page.slug}}/\" target=\"blank\">Go to page by\n                slug</a></strong><br/><strong><a href=\"/pageid/{{page._id}}\" target=\"blank\">Go to page by id</a></strong><br/>\n            </p>\n            <section *ngFor=\"let content of contents\">{{content.name}}</section>\n        </div>"
         }), 
         __metadata('design:paramtypes', [page_service_1.PageService, content_service_1.ContentService, router_1.ActivatedRoute, common_1.Location])
     ], PageDetailsComponent);

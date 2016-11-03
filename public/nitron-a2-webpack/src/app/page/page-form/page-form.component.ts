@@ -9,7 +9,7 @@ import {Page} from "../page";
 
 @Component({
     selector: 'page-form',
-    templateUrl: 'page-form.component.html',
+    templateUrl: './page-form.component.html',
 })
 
 export class PageFormComponent implements OnInit {
