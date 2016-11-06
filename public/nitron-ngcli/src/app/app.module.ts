@@ -9,6 +9,8 @@ import {ReactiveFormsModule} from '@angular/forms';
 // App
 import {AppComponent}   from './app.component';
 
+import {HeaderComponent} from './common/header.component';
+
 // Pages
 import {
   PageService,
@@ -47,6 +49,8 @@ import {AppRoutingModule} from './app-routing.module';
   ],
   declarations: [
     AppComponent,
+
+    HeaderComponent,
 
     PageListComponent,
     PageListItemComponent,

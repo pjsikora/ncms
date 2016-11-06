@@ -7,36 +7,50 @@ import {Page} from './page';
 // import {TranslatePipe} from '../l18n/index';
 
 @Component({
-    selector: 'page-list',
-    template: `<h1>Pages list</h1>
-        <ul>
-                <page-list-item *ngFor="let page of pages" [page]="page" (addChild)="addChildClicked($event)"></page-list-item>
-        </ul>`,
+  selector: 'page-list',
+  templateUrl: './page-list.component.html',
 })
 
 export class PageListComponent implements OnInit {
-    pages:Array<Page> = []
+  pages: Array<Page> = []
 
-    constructor(private pageService: PageService) {
-        console.log(this.pages);
-    }
+  constructor(private pageService: PageService) {
+    console.log(this.pages);
+  }
 
-    getPages(): void {
-        this.pageService
-            .getPages()
-            .then(response => {
-                this.pages = response;
-                console.log("data")
-                console.log(response);
-            });
-    }
+  getPages(): void {
+    this.pageService
+      .getPages()
+      .then(response => {
+        this.pages = response;
+        console.log("data")
+        console.log(response);
+      });
+  }
 
-    addChildClicked():void {
-      console.log('addChildClicked')
-    }
+  addChildClicked(e): void {
+    console.log(e);
+    console.log('addChildClicked')
+  }
 
-    ngOnInit(): void {
-        this.getPages();
-        // this._translate.use('pl')
-    }
+  removeElementClicked(): void {
+    console.log('addChildClicked')
+  }
+
+  removeHardElementClicked(): void {
+    console.log('removeHardElementClicked')
+  }
+
+  editClicked(): void {
+    console.log('editClicked')
+  }
+
+  addContentClicked(): void {
+    console.log('editClicked')
+  }
+
+  ngOnInit(): void {
+    this.getPages();
+    // this._translate.use('pl')
+  }
 }

@@ -1,0 +1,10 @@
+.medium-3.columns
+  h1 Pages list
+  ul
+    page-list-item(*ngFor='let page of pages',
+      [page]='page',
+      (addchild)='addChildClicked($event)',
+      (remove)='removeElementClicked($event)',
+      (removehard)='removeHardElementClicked($event)',
+      (edit)='editClicked($event)',
+      (addcontent)='addContentClicked($event)')
