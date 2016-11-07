@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
 
 import {PageService} from './page.service';
 import {Page} from './page';
@@ -9,12 +10,16 @@ import {Page} from './page';
 @Component({
   selector: 'page-list',
   templateUrl: './page-list.component.html',
+  // templateUrl: require('./page-list.component.pug'),
 })
+
+
 
 export class PageListComponent implements OnInit {
   pages: Array<Page> = []
 
-  constructor(private pageService: PageService) {
+  constructor(private pageService: PageService,
+              private router: Router) {
     console.log(this.pages);
   }
 
@@ -29,6 +34,8 @@ export class PageListComponent implements OnInit {
   }
 
   addChildClicked(e): void {
+    let link = ['/form/add/'];
+    this.router.navigate(link);
     console.log(e);
     console.log('addChildClicked')
   }
@@ -38,14 +45,22 @@ export class PageListComponent implements OnInit {
   }
 
   removeHardElementClicked(): void {
+    let link = ['/form/add/'];
+    this.router.navigate(link);
     console.log('removeHardElementClicked')
   }
 
-  editClicked(): void {
+  editClicked(page): void {
+    console.log("========= page =========");
+    console.log(page)
+    let link = ['/page/form/edit/', page._id];
+    this.router.navigate(link);
     console.log('editClicked')
   }
 
   addContentClicked(): void {
+    let link = ['/content/add/'];
+    this.router.navigate(link);
     console.log('editClicked')
   }
 

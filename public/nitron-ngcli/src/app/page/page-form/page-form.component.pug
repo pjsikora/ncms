@@ -8,25 +8,25 @@ page-list
             .medium-12.columns
                 label
                     | Name
-                    input(type='text', value='{{page.name}}', placeholder='name')
+                    input(type='text', [(ngModel)]='page.name', placeholder='name')
             .medium-12.columns
                 label
                     | Parent_id
-                    input(type='text', value='{{page.parent_id}}', placeholder='parent_id')
+                    input(type='text', [(ngModel)]='page.parent_id', placeholder='parent_id')
             .medium-12.columns
                 label
                     | Order
-                    input(type='text', value='{{page.order}}', placeholder='order')
+                    input(type='text', [(ngModel)]='page.order', placeholder='order')
             .medium-12.columns
 
                 label
                     | Created
-                    input(type='text', value='{{page.created}}', placeholder='created')
+                    input(type='text', [(ngModel)]='page.created', placeholder='created')
             .medium-12.columns
-                input#checkbox1(type='checkbox', value='{{page.is_deleted}}')
+                input#checkbox1(type='checkbox', [(ngModel)]='page.is_deleted')
                 label(for='checkbox1') Is deleted (is_deleted)
             .medium-12.columns
-                input#checkbox2(type='checkbox', value='{{page.is_visible}}')
+                input#checkbox2(type='checkbox', [(ngModel)]='page.is_visible')
                 label(for='checkbox2') Is visible (is_visible)
             .medium-12.columns
                 button.button((click)='onSubmitClick()') Submit

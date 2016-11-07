@@ -10,7 +10,7 @@ import {Router} from '@angular/router';
                     <span class="fa fa-trash" (click)="onClickRmoveHard()"></span>
                     <span class="fa fa-plus" (click)="onClickAddChild()"></span>
                     <span class="fa fa-plus-square-o" (click)="onClickAddContent()"></span>
-
+                        <ul></ul>
                     </li>`,
 })
 
@@ -26,6 +26,7 @@ export class PageListItemComponent {
 
 
   constructor(private router: Router) {
+    console.log(this.page);
   }
 
   onClickShowDetails() {
@@ -35,9 +36,9 @@ export class PageListItemComponent {
 
   onClickEdit() {
     console.log('edit');
-    let link = ['/page/form/edit', this.page._id];
+    let link = ['/page/form/edit/', this.page._id];
     this.router.navigate(link);
-    this.edit.emit(null);
+    this.edit.emit(this.page);
   }
 
   onClickRemove() {
