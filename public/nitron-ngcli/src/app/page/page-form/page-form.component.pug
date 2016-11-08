@@ -6,27 +6,30 @@ page-list
     form(action='')
         .row
             .medium-12.columns
+                p strong Page ID
+                | {{page._id}}
+            .medium-12.columns
                 label
                     | Name
-                    input(type='text', [(ngModel)]='page.name', placeholder='name')
+                    input(type='text', [(ngModel)]='page.name', placeholder='name', name='name', [ngModelOptions]="{standalone: true}")
             .medium-12.columns
                 label
                     | Parent_id
-                    input(type='text', [(ngModel)]='page.parent_id', placeholder='parent_id')
+                    input(type='text', [(ngModel)]='page.parent_id', placeholder='parent_id', name='parent_id', [ngModelOptions]="{standalone: true}")
             .medium-12.columns
                 label
                     | Order
-                    input(type='text', [(ngModel)]='page.order', placeholder='order')
+                    input(type='text', [(ngModel)]='page.order', placeholder='order',name='order', [ngModelOptions]="{standalone: true}")
             .medium-12.columns
 
                 label
                     | Created
-                    input(type='text', [(ngModel)]='page.created', placeholder='created')
+                    input(type='text', [(ngModel)]='page.created', placeholder='created', name='created', [ngModelOptions]="{standalone: true}")
             .medium-12.columns
-                input#checkbox1(type='checkbox', [(ngModel)]='page.is_deleted')
+                input#checkbox1(type='checkbox', [(ngModel)]='page.is_deleted', [ngModelOptions]="{standalone: true}")
                 label(for='checkbox1') Is deleted (is_deleted)
             .medium-12.columns
-                input#checkbox2(type='checkbox', [(ngModel)]='page.is_visible')
+                input#checkbox2(type='checkbox', [(ngModel)]='page.is_visible', [ngModelOptions]="{standalone: true}")
                 label(for='checkbox2') Is visible (is_visible)
             .medium-12.columns
                 button.button((click)='onSubmitClick()') Submit

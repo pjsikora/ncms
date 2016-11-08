@@ -24,17 +24,29 @@ export class PageListComponent implements OnInit {
   }
 
   getPages(): void {
-    this.pageService
-      .getPages()
-      .then(response => {
-        this.pages = response;
-        console.log("data")
-        console.log(response);
-      });
+    var pages = this.pageService.getPagesFromLS();
+
+    if (pages === null) {
+      console.log('Pages doesnt exists in localStorage');
+
+      this.pageService
+        .getPages()
+        .then(response => {
+          this.pages = response;
+
+          this.pageService.setPagesToLS(response); // save in localstorage
+        });
+    } else {
+      console.log('Pages exists in localStorage');
+
+      this.pages = pages;
+    }
+
+
   }
 
   addChildClicked(e): void {
-    let link = ['/form/add/'];
+    let link = ['/page/form/add/'];
     this.router.navigate(link);
     console.log(e);
     console.log('addChildClicked')
@@ -45,7 +57,7 @@ export class PageListComponent implements OnInit {
   }
 
   removeHardElementClicked(): void {
-    let link = ['/form/add/'];
+    let link = ['/page/form/add/'];
     this.router.navigate(link);
     console.log('removeHardElementClicked')
   }
