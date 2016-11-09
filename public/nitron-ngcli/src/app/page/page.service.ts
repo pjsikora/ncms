@@ -26,7 +26,15 @@ export class PageService {
   create() {
   }
 
-  update() {
+  update(reqData): Promise<any> {
+
+    var link = this.pagesUrl+'update?'+reqData;
+    console.log('link');
+    console.log(link);
+    return this.http.get(link)
+      .toPromise()
+      .then(response => response.json().content)
+      .catch(this.handleError);
   }
 
   read(id): Promise<Page> {

@@ -87,6 +87,7 @@ var PageController = {
     },
 
     // http://localhost:8888/api/pages/update?_id=58036f648ffa843c22140173&name=NOOOOOOOOWA
+    // http://localhost:8888/api/pages/update?_id=5809e3c4fc6e698979a11b23&parent_id=5809b45863afbb80a6509377&is_deleted=1&is_visible=1&name=NOOOOOOOOWA&created=2016-10-21T09%3A45%3A40.032Z
     update: function (req, res) {
         var _gp = req.query, // GET params
 

@@ -6,8 +6,11 @@ page-list
     form(action='')
         .row
             .medium-12.columns
-                p strong Page ID
+                p
+                  strong Page ID
                 | {{page._id}}
+            .medium-12.columns
+                span.fa.fa-refresh((click)="fetchData()", title="Get data from server")
             .medium-12.columns
                 label
                     | Name
@@ -20,6 +23,18 @@ page-list
                 label
                     | Order
                     input(type='text', [(ngModel)]='page.order', placeholder='order',name='order', [ngModelOptions]="{standalone: true}")
+            .medium-12.columns
+                label
+                    | Page keywords
+                    input(type='text', [(ngModel)]='page.page_keywords', placeholder='page_keywords',name='page_keywords', [ngModelOptions]="{standalone: true}")
+            .medium-12.columns
+                label
+                    | Page description
+                    input(type='text', [(ngModel)]='page.page_description', placeholder='page_description',name='page_description', [ngModelOptions]="{standalone: true}")
+            .medium-12.columns
+                label
+                    | Slug
+                    input(type='text', [(ngModel)]='page.slug', placeholder='slug',name='slug', [ngModelOptions]="{standalone: true}")
             .medium-12.columns
 
                 label

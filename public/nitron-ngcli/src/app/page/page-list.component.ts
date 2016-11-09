@@ -23,19 +23,31 @@ export class PageListComponent implements OnInit {
     console.log(this.pages);
   }
 
+  fetchData() {
+    this.pageService
+      .getPages()
+      .then(response => {
+        this.pages = response;
+
+        this.pageService.setPagesToLS(response); // save in localstorage
+      });
+  }
+
   getPages(): void {
     var pages = this.pageService.getPagesFromLS();
 
     if (pages === null) {
       console.log('Pages doesnt exists in localStorage');
 
-      this.pageService
-        .getPages()
-        .then(response => {
-          this.pages = response;
 
-          this.pageService.setPagesToLS(response); // save in localstorage
-        });
+      this.fetchData();
+      // this.pageService
+      //   .getPages()
+      //   .then(response => {
+      //     this.pages = response;
+      //
+      //     this.pageService.setPagesToLS(response); // save in localstorage
+      //   });
     } else {
       console.log('Pages exists in localStorage');
 

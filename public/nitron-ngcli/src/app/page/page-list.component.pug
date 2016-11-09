@@ -1,5 +1,7 @@
 .medium-3.columns
   h1 Pages list
+  p
+    span.fa.fa-refresh((click)="fetchData()", title="Get data from server")
   ul
     page-list-item(*ngFor='let page of pages',
       [page]='page',
