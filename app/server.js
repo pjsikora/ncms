@@ -4,7 +4,8 @@ var express = require('express'),
     helmet = require('helmet'), // Security pluggin
     compression = require('compression'), // Security pluggin
     morgan = require('morgan'), // Reporting
-    config = require('./config');
+    config = require('./config'),
+    bodyParser = require('body-parser'); // Body of POST
 
 // Routings
 var apiRoutes = require('./routes-api'),
@@ -17,7 +18,8 @@ mongoose.connect(config.db.mongodb, function(err) {
     if (err) throw err;
 });
 
-
+app.use(bodyParser.json()); // support json encoded bodies
+app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
 
 app.use(compression());

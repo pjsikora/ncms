@@ -1,10 +1,20 @@
-var PageModel = require('../models/Page');
+var PageModel = require('../models/Page'),
+    fs = require('fs'),
+    path = require('path'),
+    templatesFolder = __dirname+'/../views';
 
 
 var PageController = {
     list: function (req, res) {
-        var parent_id = req.query.parent_id,
-            searchCriteria = parent_id ? {parent_id: parent_id} : {},
+        if (req.method === "GET") {
+            var parent_id = req.query.parent_id;
+        } else {
+            console.log("POST");
+            var parent_id = req.body.prarent_id;
+
+        }
+
+        var searchCriteria = parent_id ? {parent_id: parent_id} : {},
             response = {};
 
         PageModel.find(searchCriteria, function (err, nd_pages) {
@@ -22,9 +32,24 @@ var PageController = {
         });
     },
 
+    listTemplates: function (req, res) {
+        fs.readdir(templatesFolder, function (err, files) {
+            var filesArray = [];
+
+            files.forEach(function (file) {
+                console.log(file);
+
+                filesArray.push(file);
+            });
+
+            res.json(filesArray);
+        })
+    },
+
 
     // http://localhost:8888/api/pages/create?order=0&name=Third%20level&parent_id=57fba6ef97b6895d80b58bbf
     create: function (req, res) {
+
         var _gp = req.query, // Get params
             parent_id = _gp.parent_id || 0,
             is_deleted = _gp.is_deleted || 1,
@@ -119,7 +144,7 @@ var PageController = {
         var newPage = new PageModel(pageModel),
             query = {_id: _id};
 
-        PageModel.update(query, { $set: pageModel}, function (err) {
+        PageModel.update(query, {$set: pageModel}, function (err) {
             if (err) {
                 response['status'] = "error";
                 response['content'] = err;
@@ -154,11 +179,10 @@ var PageController = {
     },
 
 
-
-    hasChild: function(id) {
+    hasChild: function (id) {
         var response = false;
 
-        PageModel.find({parent_id: id}, function(err) {
+        PageModel.find({parent_id: id}, function (err) {
             if (err) {
                 response['status'] = "error";
                 response['content'] = err;

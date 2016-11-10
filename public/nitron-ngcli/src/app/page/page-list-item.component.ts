@@ -53,6 +53,8 @@ export class PageListItemComponent {
 
   onClickAddChild() {
     console.log('onClickAddChild');
+    let link = ['/page/form/add/', this.page._id];
+    this.router.navigate(link);
     this.addChild.emit(null);
   }
 

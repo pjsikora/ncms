@@ -6,6 +6,9 @@ import {ReactiveFormsModule} from '@angular/forms';
 
 // import {TranslateModule, TranslateService} from 'ng2-translate';
 
+// Common
+import {ModalWindow} from './common/modalwindow.component';
+
 // App
 import {AppComponent}   from './app.component';
 
@@ -52,12 +55,17 @@ import {AppRoutingModule} from './app-routing.module';
 
     HeaderComponent,
 
+    // Page
     PageListComponent,
     PageListItemComponent,
     PageFormComponent,
     PageDetailsComponent,
 
+    // Content
     ContentFormComponent,
+
+    // Common
+    ModalWindow
 
     // TranslatePipe
   ],

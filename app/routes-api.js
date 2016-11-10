@@ -17,6 +17,7 @@ router.get('/pages/create', PageController.create);
 router.get('/pages/read', PageController.read);
 router.get('/pages/update', PageController.update);
 router.get('/pages/remove', PageController.remove);
+router.get('/pages/templates', PageController.listTemplates);
 
 router.get('/contents/list', ContentController.list);
 router.get('/contents/create', ContentController.create);

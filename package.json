@@ -9,11 +9,14 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.15.2",
     "compression": "^1.6.2",
     "express": "^4.14.0",
+    "fs": "0.0.1-security",
     "helmet": "^2.3.0",
     "mongoose": "^4.6.3",
     "morgan": "^1.7.0",
+    "path": "^0.12.7",
     "pug": "^2.0.0-beta6"
   },
   "devDependencies": {
