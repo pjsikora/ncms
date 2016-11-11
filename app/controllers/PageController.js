@@ -1,7 +1,9 @@
 var PageModel = require('../models/Page'),
     fs = require('fs'),
     path = require('path'),
-    templatesFolder = __dirname+'/../views';
+    templatesFolder = __dirname+'/../views/templates',
+    filesInDir = require('../common/list-files-in-dir'),
+    readLine = require('../common/read-line');
 
 
 var PageController = {
@@ -33,17 +35,25 @@ var PageController = {
     },
 
     listTemplates: function (req, res) {
-        fs.readdir(templatesFolder, function (err, files) {
-            var filesArray = [];
+        var files = filesInDir(templatesFolder, '.pug'),
+            finalObj = [];
 
-            files.forEach(function (file) {
-                console.log(file);
 
-                filesArray.push(file);
+        files.forEach(function(el) {
+            var templateObj = {};
+
+            templateObj['path'] = el;
+
+
+            readLine(el, 1, function(err, data) {
+                templateObj['firstLine'] = data;
             });
 
-            res.json(filesArray);
-        })
+            finalObj.push(templateObj);
+        });
+
+
+        res.json(finalObj);
     },
 
 
