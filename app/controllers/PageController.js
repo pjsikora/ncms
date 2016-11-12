@@ -42,11 +42,18 @@ var PageController = {
         files.forEach(function(el) {
             var templateObj = {};
 
-            templateObj['path'] = el;
+            readLine(el, 0, function(err, data) {
+                var temp = ''+data,
+                    temp = temp.slice(4);
+                    // temp = JSON.parse(temp);
 
+                console.log('---------')
+                console.log('---------')
+                console.log('---------')
+                console.log(temp)
 
-            readLine(el, 1, function(err, data) {
-                templateObj['firstLine'] = data;
+                templateObj = temp;
+                templateObj['path'] = el;
             });
 
             finalObj.push(templateObj);

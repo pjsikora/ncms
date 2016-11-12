@@ -1,33 +1,14 @@
 var fs = require('fs');
 
 function readLine(filename, line_no, callback) {
-    var stream = fs.createReadStream(filename, {
-        flags: 'r',
-        encoding: 'utf-8',
-        fd: null,
-        mode: 0666,
-        bufferSize: 64 * 1024
-    });
+    var data = fs.readFileSync(filename, 'utf8'),
+        lines = data.split("\n");
 
-    var fileData = '';
-    stream.on('data', function(data){
-        fileData += data;
+    if(+line_no > lines.length){
+        throw new Error('File end reached without finding line');
+    }
 
-        var lines = fileData.split("\n");
-
-        if(lines.length >= +line_no){
-            stream.destroy();
-            callback(null, lines[+line_no]);
-        }
-    });
-
-    stream.on('error', function(){
-        callback('Error', null);
-    });
-
-    stream.on('end', function(){
-        callback('File end reached without finding line', null);
-    });
+    callback(null, lines[+line_no]);
 
 }
 

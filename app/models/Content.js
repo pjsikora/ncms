@@ -33,4 +33,6 @@ var ND_Content__model = {
     }
 };
 
+exports.ND_Content__model = ND_Content__model;
+
 module.exports = mongoose.model('Content', ND_Content__model);

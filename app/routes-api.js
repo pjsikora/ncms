@@ -5,6 +5,7 @@ var express = require('express'),
     UserGroupController = require('./controllers/UserGroupController.js'),
     PageController = require('./controllers/PageController.js'),
     ContentController = require('./controllers/ContentController.js');
+    ContentTypeController = require('./controllers/ContentTypeController.js');
 
 // router.get('/users/list', UserController.)
 router.get('/users/create', UserController.create);
@@ -24,5 +25,7 @@ router.get('/contents/create', ContentController.create);
 router.get('/contents/read', ContentController.read);
 router.get('/contents/update', ContentController.update);
 router.get('/contents/remove', ContentController.remove);
+
+router.get('/ctype/list', ContentTypeController.list);
 
 module.exports = router;
