@@ -1,4 +1,4 @@
-var ContentModel = require('../models/Content'),
+var ContentModel = require('../models/ContentModel'),
     fs = require('fs'),
     path = require('path'),
     templatesFolder = __dirname+'/../views/templates',
@@ -7,9 +7,12 @@ var ContentModel = require('../models/Content'),
 
 var ContentTypeController = {
     list: function(req, res) {
-        console.log(ContentModel.ND_Content__model);
+        console.log(JSON.stringify(ContentModel.model));
+        console.log(JSON.stringify(ContentModel.model));
 
-        res.json({ContentModel : 'ND_Content__model'});
+
+        var dd = JSON.stringify(ContentModel);
+        res.json({ding: dd});
     }
 }
 
