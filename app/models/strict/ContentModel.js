@@ -1,5 +1,6 @@
-var ND_Content__model = {
-    id: String,
+var model = {
+    // id: String,
+
     parent_id: {
         type: String,
         required: true
@@ -12,7 +13,9 @@ var ND_Content__model = {
         type: Number,
         required: true
     },
-    content: String,
+    content: {
+        type: String
+    },
     page_id: {
         type: String,
         required: true
@@ -23,7 +26,7 @@ var ND_Content__model = {
     },
     is_visible: {
         type: Number,
-        derault: true
+        default: true
     },
     name: {
         type: String,
@@ -31,4 +34,4 @@ var ND_Content__model = {
     }
 };
 
-module.exports = ND_Content__model;
+module.exports = model;
