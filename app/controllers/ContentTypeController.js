@@ -1,4 +1,5 @@
 var ContentModel = require('../models/strict/ContentModel'),
+    PageModel = require('../models/strict/PageModel'),
 
     fs = require('fs'),
     path = require('path'),
@@ -9,6 +10,9 @@ var ContentModel = require('../models/strict/ContentModel'),
 
 var ContentTypeController = {
     list: function (req, res) {
+
+
+
         var finalObject = {};
 
         for (var index in ContentModel) {
@@ -27,7 +31,13 @@ var ContentTypeController = {
         }
 
         res.json(finalObject);
-    }
+    },
+
+    read: function(req, res) {
+
+    },
+
+
 }
 
 module.exports = ContentTypeController;
