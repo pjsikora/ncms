@@ -5,15 +5,19 @@ var ContentModel = require('../models/strict/ContentModel'),
     path = require('path'),
     templatesFolder = __dirname + '/../views/templates',
     filesInDir = require('../common/list-files-in-dir'),
-    readLine = require('../common/read-line');
+    readLine = require('../common/read-line'),
+
+    typesArray = [ContentModel, PageModel];
 
 
 var ContentTypeController = {
     list: function (req, res) {
-
-
-
         var finalObject = {};
+
+        typesArray.forEach(function(el) {
+            console.log('----------')
+            console.log('----------')
+        });
 
         for (var index in ContentModel) {
             var attr = ContentModel[index],
@@ -35,7 +39,7 @@ var ContentTypeController = {
 
     read: function(req, res) {
 
-    },
+    }
 
 
 }
