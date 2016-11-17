@@ -26,6 +26,25 @@ router.get('/contents/read', ContentController.read);
 router.get('/contents/update', ContentController.update);
 router.get('/contents/remove', ContentController.remove);
 
+
+router.post('/users/create', UserController.create);
+router.post('/users/read', UserController.read);
+router.post('/users/update', UserController.update);
+router.post('/users/remove', UserController.remove);
+
+router.post('/pages/list', PageController.list);
+router.post('/pages/create', PageController.create);
+router.post('/pages/read', PageController.read);
+router.post('/pages/update', PageController.update);
+router.post('/pages/remove', PageController.remove);
+router.post('/pages/templates', PageController.listTemplates);
+
+router.post('/contents/list', ContentController.list);
+router.post('/contents/create', ContentController.create);
+router.post('/contents/read', ContentController.read);
+router.post('/contents/update', ContentController.update);
+router.post('/contents/remove', ContentController.remove);
+
 router.get('/ctype/list', ContentTypeController.list);
 
 module.exports = router;

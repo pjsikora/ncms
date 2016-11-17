@@ -1,7 +1,7 @@
 var PageModel = require('../models/Page'),
     fs = require('fs'),
     path = require('path'),
-    templatesFolder = __dirname+'/../views/templates',
+    templatesFolder = __dirname + '/../views/templates',
     filesInDir = require('../common/list-files-in-dir'),
     readLine = require('../common/read-line');
 
@@ -11,9 +11,7 @@ var PageController = {
         if (req.method === "GET") {
             var parent_id = req.query.parent_id;
         } else {
-            console.log("POST");
             var parent_id = req.body.prarent_id;
-
         }
 
         var searchCriteria = parent_id ? {parent_id: parent_id} : {},
@@ -39,18 +37,12 @@ var PageController = {
             finalObj = [];
 
 
-        files.forEach(function(el) {
+        files.forEach(function (el) {
             var templateObj = {};
 
-            readLine(el, 0, function(err, data) {
-                var temp = ''+data,
+            readLine(el, 0, function (err, data) {
+                var temp = '' + data,
                     temp = temp.slice(4);
-                    // temp = JSON.parse(temp);
-
-                console.log('---------')
-                console.log('---------')
-                console.log('---------')
-                console.log(temp)
 
                 templateObj = temp;
                 templateObj['path'] = el;
@@ -66,9 +58,15 @@ var PageController = {
 
     // http://localhost:8888/api/pages/create?order=0&name=Third%20level&parent_id=57fba6ef97b6895d80b58bbf
     create: function (req, res) {
+        var _gp;
 
-        var _gp = req.query, // Get params
-            parent_id = _gp.parent_id || 0,
+        if (req.method === "GET") {
+            _gp = req.query;
+        } else {
+            _gp = req.body;
+        }
+
+        var parent_id = _gp.parent_id || 0,
             is_deleted = _gp.is_deleted || 1,
             is_visible = _gp.is_visible || 1,
             page_description = _gp.page_description || '',
@@ -109,7 +107,15 @@ var PageController = {
 
 
     read: function (req, res) {
-        var _id = req.query._id,
+        var _gp;
+
+        if (req.method === "GET") {
+            _gp = req.query;
+        } else {
+            _gp = req.body;
+        }
+
+        var _id = _gp._id,
             searchCriteria = _id ? {_id: _id} : {},
             response = {};
 
@@ -131,9 +137,15 @@ var PageController = {
     // http://localhost:8888/api/pages/update?_id=58036f648ffa843c22140173&name=NOOOOOOOOWA
     // http://localhost:8888/api/pages/update?_id=5809e3c4fc6e698979a11b23&parent_id=5809b45863afbb80a6509377&is_deleted=1&is_visible=1&name=NOOOOOOOOWA&created=2016-10-21T09%3A45%3A40.032Z
     update: function (req, res) {
-        var _gp = req.query, // GET params
+        var _gp;
 
-            _id = _gp._id,
+        if (req.method === "GET") {
+            _gp = req.query;
+        } else {
+            _gp = req.body;
+        }
+
+        var _id = _gp._id,
             parent_id = _gp.parent_id,
             is_deleted = _gp.is_deleted,
             is_visible = _gp.is_visible,
@@ -181,7 +193,15 @@ var PageController = {
     remove: function (req, res) {
         var response = {};
 
-        PageModel.remove({_id: req.query._id}, function (err) {
+        var _gp;
+
+        if (req.method === "GET") {
+            _gp = req.query;
+        } else {
+            _gp = req.body;
+        }
+
+        PageModel.remove({_id: _gp._id}, function (err) {
             if (err) {
                 response['status'] = "error";
                 response['content'] = err;
