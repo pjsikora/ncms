@@ -27,6 +27,9 @@ router.get('/contents/update', ContentController.update);
 router.get('/contents/remove', ContentController.remove);
 
 
+router.get('/contents', PageController.list);
+
+
 router.post('/users/create', UserController.create);
 router.post('/users/read', UserController.read);
 router.post('/users/update', UserController.update);

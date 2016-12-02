@@ -1,15 +1,14 @@
 class PageFormComponent {
-    static getHTML(data) {
-        if (typeof data != 'undefined') {
-            console.log("data exists");
-            console.log(data);
+  static getHTML(data) {
+    if (typeof data != 'undefined') {
+      console.log("data exists");
+      console.log(data);
 
-            var parent_id = data.parent_id
-        }
+      var parent_id = data.parent_id
+    }
 
 
-
-        var form = `<h3>Page form</h3>
+    var form = `<h3>Page form</h3>
                 <input type="text" class="hidden" id="parent_id" val="${parent_id}">
                 <input type="text" placeholder="Name" value="${(typeof data.name == 'undefined') ? '' : data.name}" id="name">
                 <input type="text" placeholder="SEO Keywords" value="${(typeof data.page_keywords == 'undefined') ? '' : data.page_keywords}" id="page_keywords">
@@ -22,22 +21,22 @@ class PageFormComponent {
             <button id="createPage">Submit</button>
         `;
 
-        return form;
-    }
+    return form;
+  }
 
-    createPage(data) {
+  createPage(data) {
 
-    }
+  }
 
-    updatePage(data) {
+  updatePage(data) {
 
-    }
+  }
 
-    clearForm() {
-    }
+  clearForm() {
+  }
 
-    sendData() {
-    }
+  sendData() {
+  }
 
 
 }
