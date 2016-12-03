@@ -3,9 +3,9 @@
 // import AdminPanelComponent from "adminpanel/AdminPanelComponent";
 
 document.addEventListener("DOMContentLoaded", function (event) {
-    console.log('ding');
+	console.log('ding');
 
-    var adminPanel = new AdminPanelComponent();
+	var adminPanel = new AdminPanelComponent();
 });
 
 

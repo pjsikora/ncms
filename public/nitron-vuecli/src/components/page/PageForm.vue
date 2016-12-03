@@ -14,7 +14,15 @@
             <label>
               <!-- Visible -->
               {{L18n.page.form.visible}}
-              <input type="checkbox" id="page.is_visible">
+              <input type="checkbox" v-model="page.is_visible" v-bind:true-value="1"
+                     v-bind:false-value="0">
+            </label>
+
+            <label>
+              <!-- Deleted -->
+              {{L18n.page.form.deleted}}
+              <input type="checkbox" v-model="page.is_deleted" v-bind:true-value="1"
+                     v-bind:false-value="0">
             </label>
 
             <label>
@@ -53,8 +61,11 @@
             </label>
 
             <label>
+              <!--Page SEO Description-->
               Page SEO Description
-              <input type="text" placeholder="SEO Description" v-model="page.seo_description">
+              {{L18n.page.form.description__label}}
+              <input type="text" v-bind:placeholder="L18n.page.form.description__placeholder"
+                     v-model="page.seo_description">
             </label>
           </fieldset>
 
@@ -69,9 +80,11 @@
       <div class="page_form__notice">
 
       </div>
-      <div class="page_form__progress"></div>
-    </div>
 
+      <div class="page_form__progress">
+
+      </div>
+    </div>
   </div>
 </template>
 
@@ -86,9 +99,13 @@
     data () {
       return {
         page: {
+          is_visible: 1,
+          is_deleted: 0,
           parent_id: '0',
           order: '0'
         },
+
+        // Localization
         L18n: L18n
       }
     },
@@ -99,8 +116,6 @@
 
     methods: {
       submitOnClick () {
-        console.log('SubmitClicked')
-        // console.log(this.page__name)
         console.log(this.page)
         console.log(Helpers.JSON2GET(this.page))
 
@@ -108,6 +123,7 @@
                 .then((response) => {
                   console.log(response)
                 }, (response) => {
+                  console.log('error')
                   console.log(response)
                 })
       }

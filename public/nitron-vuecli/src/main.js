@@ -2,9 +2,7 @@ import Vue from 'vue'
 import App from './App'
 
 /* Page components */
-import PageForm from './components/page/PageForm'
-import PagesTree from './components/page/PageTree'
-import PageSingle from './components/page/PageSingle'
+import {PageForm, PagesTree, PageSingle} from './components/page'
 
 /* Content components */
 import ContentForm from './components/content/ContentForm'
@@ -19,16 +17,16 @@ Vue.use(VueRouter)
 Vue.use(VueResource)
 
 const routes = [
-  { path: '/', component: Home },
+  {path: '/', component: Home},
 
-  { path: '/pages/form', component: PageForm },
-  { path: '/pages/tree', component: PagesTree },
-  { path: '/pages/single', component: PageSingle },
-  { path: '/pages/single/:page_id', component: PageSingle },
+  {path: '/pages/form', component: PageForm},
+  {path: '/pages/tree', component: PagesTree},
+  {path: '/pages/single', component: PageSingle},
+  {path: '/pages/single/:page_id', component: PageSingle},
 
-  { path: '/content/form', component: ContentForm },
-  { path: '/content/single', component: ContentSingle },
-  { path: '/content/single/:content_id', component: ContentSingle }
+  {path: '/content/form', component: ContentForm},
+  {path: '/content/single', component: ContentSingle},
+  {path: '/content/single/:content_id', component: ContentSingle}
 ]
 
 const router = new VueRouter({
@@ -40,5 +38,5 @@ new Vue({
   router,
   el: '#app',
   template: '<App/>',
-  components: { App }
+  components: {App}
 })
