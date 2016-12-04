@@ -12,6 +12,8 @@
 </template>
 
 <script type="text/babel">
+  import CFG from '../../config'
+
   export default {
     name: 'pages-tree',
 
@@ -56,7 +58,7 @@
     created () {
       this
               .$http
-              .get('http://localhost:8888/api/pages/list')
+              .get(CFG.api + '/pages/list')
               .then((response) => {
                 this.pages = response.body.content
 

@@ -15,7 +15,7 @@
       </div>
       <!--Is deleted-->
       <div class="medium-12 columns">
-        <div class="medium-3 columns text-right"><strong>Is {{L18n.is_deleted}}</strong></div>
+        <div class="medium-3 columns text-right"><strong>{{L18n.is_deleted}}</strong></div>
         <div class="medium-9 columns">{{page.is_deleted}}</div>
       </div>
       <!--Is visible-->
@@ -69,7 +69,8 @@
 
 <script type="text/babel">
   import PageTree from './PageTree'
-  import L18n from '../../l18n'
+  import L18n from '../../l18n/Localization'
+  import CFG from '../../config'
 
   export default {
     components: {
@@ -96,7 +97,7 @@
       console.log(this.$route.params)
       let pageID = this.$route.params.page_id
 
-      this.$http.get('http://localhost:8888/api/pages/read?_id=' + pageID)
+      this.$http.get(CFG.api + '/pages/read?_id=' + pageID)
         .then((response) => {
           console.log(response)
           this.page = response.body.content[0]

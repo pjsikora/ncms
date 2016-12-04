@@ -6,6 +6,7 @@
         <router-link to="/pages/form">Pages form</router-link>
         <router-link to="/pages/tree">Pages tree</router-link>
         <router-link to="/pages/single">Pages single</router-link>
+        <router-link to="/config">Config</router-link>
       </div>
       <div class="medium-12 columns">
         <router-view></router-view>

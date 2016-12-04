@@ -94,6 +94,8 @@
 
   import L18n from '../../l18n/Localization'
 
+  import CFG from '../../config'
+
   export default {
     name: 'hello',
     data () {
@@ -119,7 +121,7 @@
         console.log(this.page)
         console.log(Helpers.JSON2GET(this.page))
 
-        this.$http.get('http://localhost:8888/api/pages/create?' + Helpers.JSON2GET(this.page))
+        this.$http.get(CFG.api + '/pages/create?' + Helpers.JSON2GET(this.page))
                 .then((response) => {
                   console.log(response)
                 }, (response) => {
