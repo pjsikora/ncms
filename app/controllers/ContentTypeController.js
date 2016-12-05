@@ -14,11 +14,6 @@ var ContentTypeController = {
     list: function (req, res) {
         var finalObject = {};
 
-        typesArray.forEach(function(el) {
-            console.log('----------')
-            console.log('----------')
-        });
-
         for (var index in ContentModel) {
             var attr = ContentModel[index],
                 attributes = {}
@@ -38,7 +33,6 @@ var ContentTypeController = {
     },
 
     read: function(req, res) {
-
     }
 
 
